@@ -21,7 +21,7 @@ class BooksList2 extends React.Component {
           )}
         </Grid>
         <h3>Total favorites: {this.props.favoriesCount}</h3>
-        <Button onClick={resetAll}>Reset all favorites</Button>
+        <Button onClick={this.props.resetAll}>Reset all favorites</Button>
       </>
     );
   }

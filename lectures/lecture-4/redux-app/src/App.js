@@ -1,5 +1,5 @@
 import React from "react";
-import BooksList from "./components/books-list/books-list";
+import BooksList from "./components/books-list/books-list-2";
 // import { ThemeToggle } from "./components/theme-toggle/theme-toggle";
 
 function App() {
