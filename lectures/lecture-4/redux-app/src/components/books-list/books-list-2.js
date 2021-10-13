@@ -27,7 +27,7 @@ class BooksList2 extends React.Component {
   }
 }
 
-const masStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     books: state.books,
     favoriesCount: state.books.filter((book) => book.isFavorite).length,
@@ -38,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   return { resetAll: () => dispatch(resetAll()) };
 };
 
-export default connect(masStateToProps, mapDispatchToProps)(BooksList2);
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList2);
