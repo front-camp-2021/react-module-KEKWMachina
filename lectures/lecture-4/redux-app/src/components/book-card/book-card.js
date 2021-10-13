@@ -1,21 +1,22 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Card, Header, Icon, Button, Divider } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { CHANGE_FAVORITE_STATUS } from "../../features/books/actions/actions";
-import { ThemeContext } from "../root-provider/root-provider";
+// import { ThemeContext } from "../root-provider/root-provider";
 
 export function BookCard({ card }) {
   const dispatch = useDispatch();
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
 
   return (
     <Card
       style={{
         padding: "10px",
         marginRight: "25px",
-        background: theme.background,
-        color: theme.fontColor,
+        // background: theme.background,
+        // color: theme.fontColor,
       }}
     >
       <div
