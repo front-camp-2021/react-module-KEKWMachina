@@ -1,7 +1,7 @@
 import Checkbox from "../checkbox/checkbox";
-import { cardsData } from "../../../../data";
 
 function Filters(props) {
+    let id = 0;
 
     return (
         <>
@@ -9,7 +9,8 @@ function Filters(props) {
                 <h5 className="filters__section-header">{props.title}</h5>
                 {
                     props.categoriesData.map(item => {
-                        return <Checkbox checkboxName={item} handleChange={props.handleFiltersChange} title={props.title}/>
+                        id++;
+                        return <Checkbox checkboxName={item} handleChange={props.handleFiltersChange} title={props.title} key={id}/>
                     })
                 }
             </div>

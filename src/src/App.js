@@ -1,8 +1,35 @@
 import FiltersContainer from './components/filters-container/filtersConrainer';
 import CardsContainer from './components/cards-container/searchfield/cardsContainer';
 import Pagination from './components/pagination/pagination';
+import { useState } from 'react';
+import { cardsData } from './data';
+import { filterData } from './components/filters-container/filters/filterLogic';
 
 function App() {
+  const [categoriesFilters, setCategoriesFilters] = useState(new Set());
+  const [brandsFilters, setBrandsFilters] = useState(new Set());
+
+  function handleCategoriesChange(event) {
+    if (event.target.checked) {
+      setCategoriesFilters(prev => new Set(prev).add(event.target.name));
+    } else {
+      const temp = categoriesFilters;
+      temp.delete(event.target.name);
+      setCategoriesFilters(prev => new Set(temp));
+    }
+  }
+
+  function handleBrandsChange(event) {
+    if (event.target.checked) {
+      setBrandsFilters(prev => new Set(prev).add(event.target.name));
+    } else {
+      const temp = brandsFilters;
+      temp.delete(event.target.name);
+      setBrandsFilters(prev => new Set(temp));
+    }
+  }
+
+  const cards = [...cardsData];
 
   return (
     <div className="App">
@@ -32,8 +59,8 @@ function App() {
         </div>
       </div>
       <div className="main-content">
-        <FiltersContainer />
-        <CardsContainer />
+        <FiltersContainer onCategoriesChange={handleCategoriesChange} onBrandsChange={handleBrandsChange}/>
+        <CardsContainer cardsData={filterData(cards, categoriesFilters, brandsFilters, cards)}/>
       </div>
       <Pagination />
     </div>
