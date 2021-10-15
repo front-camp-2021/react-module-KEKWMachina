@@ -10,13 +10,13 @@ function Filters(props) {
                 {
                     props.categoriesData.map(item => {
                         id++;
-                        return <Checkbox checkboxName={item} handleChange={props.handleFiltersChange} title={props.title} key={id}/>
+                        return <Checkbox checkboxName={item} handleChange={props.handleFiltersChange} title={props.title} key={id} />
                     })
                 }
             </div>
-                {
-                    props.hasLine ? <div className="filters_line"></div> : ""
-                }
+            {
+                props.hasLine ? <div className="filters_line"></div> : ""
+            }
         </>
     )
 }

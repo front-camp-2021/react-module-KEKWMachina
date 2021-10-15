@@ -1,4 +1,5 @@
 export function filterData(productsArr = [], categoryFilters = [], brandFilters = [], originalArr = []) {
+    if(categoryFilters.length === 0 && brandFilters.length === 0) return originalArr;
 
     function filter(productsArr = [], filters = [], propertyName) {
       if (productsArr.length === 0) {
@@ -7,7 +8,7 @@ export function filterData(productsArr = [], categoryFilters = [], brandFilters 
 
       const result = [];
 
-      for (const filter of Array.from(filters)) {
+      for (const filter of filters) {
         for (const product of productsArr) {
           if (product[propertyName].includes(filter.toLowerCase())) {
             result.push(product);

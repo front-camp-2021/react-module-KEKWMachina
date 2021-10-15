@@ -1,69 +1,71 @@
 import FiltersContainer from './components/filters-container/filtersConrainer';
 import CardsContainer from './components/cards-container/searchfield/cardsContainer';
 import Pagination from './components/pagination/pagination';
-import { useState } from 'react';
+import Header from './components/header/header';
+import Breadcrumbs from './components/breadcrumbs/breadcrumbs';
+import MainContentNav from './components/main-content-nav/main-content-nav';
+import { useDispatch, useSelector } from "react-redux";
 import { cardsData } from './data';
 import { filterData } from './components/filters-container/filters/filterLogic';
+import { addCategory, removeCategory } from './redux/categoriesSlice';
+import { addBrand, removeBrand} from './redux/brandsSlice'
 
 function App() {
-  const [categoriesFilters, setCategoriesFilters] = useState(new Set());
-  const [brandsFilters, setBrandsFilters] = useState(new Set());
+  const categoriesFilters = useSelector(state => state.categories);
+  const brandsFilters = useSelector(state => state.brands);
+  const dispatch = useDispatch();
 
   function handleCategoriesChange(event) {
     if (event.target.checked) {
-      setCategoriesFilters(prev => new Set(prev).add(event.target.name));
+      dispatch(
+        addCategory({
+          category: event.target.name,
+        })
+      )
     } else {
-      const temp = categoriesFilters;
-      temp.delete(event.target.name);
-      setCategoriesFilters(prev => new Set(temp));
+      dispatch(
+        removeCategory({
+          category: event.target.name,
+        })
+      )
     }
   }
 
   function handleBrandsChange(event) {
     if (event.target.checked) {
-      setBrandsFilters(prev => new Set(prev).add(event.target.name));
+      dispatch(
+        addBrand({
+          category: event.target.name,
+        })
+      )
     } else {
-      const temp = brandsFilters;
-      temp.delete(event.target.name);
-      setBrandsFilters(prev => new Set(temp));
+      dispatch(
+        removeBrand({
+          category: event.target.name,
+        })
+      )
     }
   }
 
   const cards = [...cardsData];
 
+  let isFiltered = false;
+
+  if(categoriesFilters.length > 0 || brandsFilters.length > 0) {
+    isFiltered = true;
+  }
+
   return (
-    <div className="App">
-      <header className="header">
-        <div className="header__logo"></div>
-        <div className="header__text">Online Store</div>
-      </header>
-
-      <div className="breadcrumbs">
-        <div className="breadcrumbs__home-button"></div>
-        <div className="breadcrumbs__arrows"></div>
-        <div className="breadcrumbs__active-page">eCommerce</div>
-        <div className="breadcrumbs__arrows"></div>
-        <div className="breadcrumbs__page">Electronics</div>
-      </div>
-
-      <div className="main-content-nav">
-        <div className="filters-header">
-          <div className="filters-header__nav">
-            <div className="filters-header__marker">Filters</div>
-            <button className="filters-header__filters-hide-button"></button>
-          </div>
+      <div className="App">
+        <Header />
+        <Breadcrumbs />
+        <MainContentNav />
+        <div className="main-content">
+          <FiltersContainer onCategoriesChange={handleCategoriesChange} onBrandsChange={handleBrandsChange} />
+          <CardsContainer cardsData={filterData(cards, categoriesFilters, brandsFilters, cards)} isFiltered={isFiltered}/>
         </div>
-        <div className="search-resluts">
-          <div className="search-resluts__number">7588 Results Found</div>
-          <button className="search-resluts__wishlist-button"></button>
-        </div>
+        <Pagination />
       </div>
-      <div className="main-content">
-        <FiltersContainer onCategoriesChange={handleCategoriesChange} onBrandsChange={handleBrandsChange}/>
-        <CardsContainer cardsData={filterData(cards, categoriesFilters, brandsFilters, cards)}/>
-      </div>
-      <Pagination />
-    </div>
   );
 }
 
