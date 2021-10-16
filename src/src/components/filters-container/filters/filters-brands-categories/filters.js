@@ -1,8 +1,47 @@
 import Checkbox from "../checkbox/checkbox";
+import { addCategory, removeCategory } from "../../../../redux/categoriesSlice";
+import { addBrand, removeBrand } from '../../../../redux/brandsSlice';
+import { useDispatch } from "react-redux";
 
 function Filters(props) {
-    let id = 0;
+    const dispatch = useDispatch();
 
+    function handleCategoriesChange(event) {
+        if (event.target.checked) {
+            dispatch(
+                addCategory({
+                    category: event.target.name,
+                })
+            )
+        } else {
+            dispatch(
+                removeCategory({
+                    category: event.target.name,
+                })
+            )
+        }
+    }
+
+    function handleBrandsChange(event) {
+        if (event.target.checked) {
+            dispatch(
+                addBrand({
+                    category: event.target.name,
+                })
+            )
+        } else {
+            dispatch(
+                removeBrand({
+                    category: event.target.name,
+                })
+            )
+        }
+    }
+
+    const changeHandler = props.title === 'Brands' ?
+    handleBrandsChange : handleCategoriesChange;
+
+    let id = 0;
     return (
         <>
             <div className="filters__category">
@@ -10,7 +49,7 @@ function Filters(props) {
                 {
                     props.categoriesData.map(item => {
                         id++;
-                        return <Checkbox checkboxName={item} handleChange={props.handleFiltersChange} title={props.title} key={id} />
+                        return <Checkbox checkboxName={item} handleChange={changeHandler} title={props.title} key={id} />
                     })
                 }
             </div>

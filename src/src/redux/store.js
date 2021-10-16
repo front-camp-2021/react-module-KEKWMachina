@@ -3,6 +3,8 @@ import searchReducer from './cardsSlice';
 import searchStatusReducer from './isSearchedSlice'
 import addCategoryReducer from './categoriesSlice';
 import addBrandReducer from './brandsSlice'
+import addToWishlistReducer from './wishlistSlice';
+
 
 export default configureStore({
 	reducer: {
@@ -10,5 +12,6 @@ export default configureStore({
 		searchStatus: searchStatusReducer,
 		categories: addCategoryReducer,
 		brands: addBrandReducer,
+		wishlist: addToWishlistReducer,
 	},
 });

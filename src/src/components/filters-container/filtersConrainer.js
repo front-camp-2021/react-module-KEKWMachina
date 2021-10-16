@@ -34,8 +34,8 @@ function FiltersContainer(props) {
   return (
     <div className="filters">
       <div className="filters__main">
-        <Filters title="Categories" categoriesData={filtersData['categories']} hasLine={true} handleFiltersChange={props.onCategoriesChange} />
-        <Filters title="Brands" categoriesData={filtersData['brands']} hasLine={false} handleFiltersChange={props.onBrandsChange} />
+        <Filters title="Categories" categoriesData={filtersData['categories']} hasLine={true}/>
+        <Filters title="Brands" categoriesData={filtersData['brands']} hasLine={false}/>
       </div>
       <ResetButton />
     </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function MainContentNav() {
     return (
         <div className="main-content-nav">
@@ -9,7 +11,9 @@ function MainContentNav() {
         </div>
         <div className="search-resluts">
           <div className="search-resluts__number">7588 Results Found</div>
-          <button className="search-resluts__wishlist-button"></button>
+          <Link to="/wishlist">
+            <button className="search-resluts__wishlist-button"></button>
+          </Link>
         </div>
       </div>
     )

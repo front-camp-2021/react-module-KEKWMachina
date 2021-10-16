@@ -10,7 +10,7 @@ function CardsContainer(props) {
     const dispatch = useDispatch();
     const userInput = useSelector(state => state.searchParameter);
     const searchStatus = useSelector(state => state.searchStatus);
-    const isSearched = searchStatus[searchStatus.length - 1]
+    const isSearched = searchStatus[searchStatus.length - 1];
 
     function handleSearchInput(event) {
         dispatch(
@@ -57,10 +57,12 @@ function CardsContainer(props) {
                     dataForRender.map(filteredData => {
                         return <Card
                             key={filteredData.id}
+                            id={filteredData.id}
                             img={filteredData.images[0]}
                             rating={filteredData.rating}
                             price={filteredData.price}
                             title={filteredData.title}
+                            addToWishlist={props.wishlistItems}
                         />
                     })
                 }
