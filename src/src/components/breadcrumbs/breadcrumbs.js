@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 function Breadcrumbs() {
     return (
         <div className="breadcrumbs">
-        <div className="breadcrumbs__home-button"></div>
+        <Link to="/"><div className="breadcrumbs__home-button"></div></Link>
         <div className="breadcrumbs__arrows"></div>
         <div className="breadcrumbs__active-page">eCommerce</div>
         <div className="breadcrumbs__arrows"></div>

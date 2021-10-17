@@ -306,12 +306,18 @@ body {
                         font-size: 16px;
                         line-height: 19px;
                         font-weight: $font-weight-medium;
+                        text-decoration: none;
                     }
 
                     .merchandise-cards__item-description {
                         font-size: 12px;
                         line-height: 14px;     
                         font-weight: $font-weight-light;
+                        
+                    }
+
+                    .merchandise-cards__item-page-link {
+                        text-decoration: none;
                     }
                 }
 
@@ -532,6 +538,10 @@ body {
                     line-height: 14px;     
                     font-weight: $font-weight-light;
                 }
+
+                .merchandise-cards__item-page-link {
+                    text-decoration: none;
+                }
             }
 
             .merchandise-cards__buttons {
@@ -574,6 +584,76 @@ body {
     }
 }
 
+//item page 
+.wishlist-nav-container__wishlist-back-btn {
+    text-decoration: none;
+    border: none;
+    background-color: $button-primary-color;
+    height: 50px;
+    width: 220px;
+    font-weight: 400;
+    border-radius: 8px;
+    margin: 15px;
+    font-size: 18px;
+    background-image: url(/img/pagination-arrow-back.svg);
+    background-repeat: no-repeat;
+    background-position: left 5% bottom 50%;
+}
+
+.item-container {
+    border-radius: 4px;
+    display: flex;
+
+    .item-container__image-container {
+        width: 50%;
+        border-radius: 4px;
+        display: flex;
+        justify-content: flex-end;
+
+        .item-container__image-wrapper {
+            width: 70%;
+            background-color: $elements-main-color;
+            border-radius: 4px;
+            text-align: center;
+            margin-right: 20px;
+
+            .item-container__image {
+                max-width: 200px;
+                max-width: 150px;
+                max-width: 400px;
+                max-height: 300px;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .item-container__description {
+        width: 50%;
+        border-radius: 4px;
+        background-color: $elements-main-color;
+        border-radius: 4px;
+
+        .item-container__description-stats {
+            list-style-type: none; 
+            padding: 0px;
+            margin-left: 20px;
+        }
+
+        .item-container__item-name {
+            margin-left: 20px;
+        }
+
+        .item-container__buy-button {
+            margin-left: 20px;
+            background-color: $button-primary-color;
+            border: none;
+            border-radius: 4px;
+            height: 40px;
+            width: 100px;
+            color: $elements-main-color;
+        }
+    }
+}
 
 @media (max-width: 1025px) {
     .cards {

@@ -10,11 +10,15 @@ export const categoriesSlice = createSlice({
 		},
 		removeCategory: (state, action) => {
 			state.splice(state.indexOf(action.payload.category), 1)
-		}
+		},
+		clearCategories: (state) => {
+			state.splice(0, state.length - 1);
+			state.pop()
+		},
 	},
 });
 
 
-export const { addCategory, removeCategory } = categoriesSlice.actions;
+export const { addCategory, removeCategory, clearCategories } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

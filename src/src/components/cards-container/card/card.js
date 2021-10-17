@@ -1,6 +1,8 @@
 import WishlistButton from "./wishlistbutton/wishlistButton";
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../../../redux/wishlistSlice";
+import { Link } from "react-router-dom";
+import { addDisplayedCard } from "../../../redux/itemPageSlice";
 
 function Card(props) {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function Card(props) {
       return null;
     })
 
-    if(isInWishlist) {
+    if (isInWishlist) {
       dispatch(
         removeFromWishlist({
           item: event.target.id
@@ -32,6 +34,14 @@ function Card(props) {
     }
   }
 
+  function setActiveItem() {
+    dispatch(
+      addDisplayedCard({
+        card: props
+      })
+    )
+  }
+
   return (
     <div className="merchandise-cards__card">
       <img src={props.img} className="merchandise-cards__image" alt={props.title}></img>
@@ -40,11 +50,13 @@ function Card(props) {
         <div className="merchandise-cards__price">₴{props.price}</div>
       </div>
       <ul className="merchandise-cards__item-descriptions">
-        <li className="merchandise-cards__item-name">{props.title}</li>
+        <Link to={`/:id${props.id}`} className='merchandise-cards__item-page-link'>
+          <li className="merchandise-cards__item-name" onPointerDown={setActiveItem}>{props.title}</li>
+        </Link>
         <li className="merchandise-cards__item-description">Redesigned from scratch and completely revised.</li>
       </ul>
       <div className="merchandise-cards__buttons">
-        <WishlistButton setWishlistItems={setWishlistItems} id={props.id} isInWishlist={isInWishlist} displayed={props.displayed}/>
+        <WishlistButton setWishlistItems={setWishlistItems} id={props.id} isInWishlist={isInWishlist} displayed={props.displayed} />
         <button className="merchandise-cards__add-to-cart-button">ADD TO CART</button>
       </div>
     </div>
