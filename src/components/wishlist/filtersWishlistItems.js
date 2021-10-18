@@ -1,4 +1,4 @@
-export function filterWishlistItems(wishlistIDs, cardsData) {
+export function filterWishlistItems(wishlistIDs, cardsData = []) {
     const result = [];
 
     for (const card of cardsData) {

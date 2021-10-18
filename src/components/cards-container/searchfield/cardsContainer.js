@@ -4,7 +4,6 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchValue } from "../../../redux/cardsSlice";
 import { isSearchedStatus } from "../../../redux/isSearchedSlice";
-import { cardsData } from "../../../data";
 
 function CardsContainer(props) {
     const dispatch = useDispatch();
@@ -45,7 +44,7 @@ function CardsContainer(props) {
 
     } else {
 
-        dataForRender = cardsData.slice(0, 9);
+        dataForRender = props.cardsData.slice(0, 9);
         
     }
 

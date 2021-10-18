@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 function Filters(props) {
     const dispatch = useDispatch();
 
+    console.log(props)
+
     function handleCategoriesChange(event) {
         if (event.target.checked) {
             dispatch(
@@ -41,13 +43,15 @@ function Filters(props) {
     const changeHandler = props.title === 'Brands' ?
     handleBrandsChange : handleCategoriesChange;
 
+    const checkboxArr = props.categoriesData ? props.categoriesData : [];
+
     let id = 0;
     return (
         <>
             <div className="filters__category">
                 <h5 className="filters__section-header">{props.title}</h5>
-                {
-                    props.categoriesData.map(item => {
+                {      
+                    checkboxArr.map(item => {
                         id++;
                         return <Checkbox checkboxName={item} handleChange={changeHandler} title={props.title} key={id} />
                     })
