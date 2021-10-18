@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'
 import searchReducer from './cardsSlice';
 import searchStatusReducer from './isSearchedSlice'
 import addCategoryReducer from './categoriesSlice';
