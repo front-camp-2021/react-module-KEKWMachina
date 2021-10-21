@@ -2,10 +2,9 @@ import Searchfield from "./searchfield";
 import Card from "../card/card";
 import React from 'react';
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-
 
 function CardsContainer(props) {
+    const elementsIndexes = (useSelector(state => state.paginationElements))[useSelector(state => state.paginationElements).length - 1];
     const userInput = useSelector(state => state.searchParameter);
     const searchStatus = useSelector(state => state.searchStatus);
     const isSearched = searchStatus[searchStatus.length - 1];
@@ -34,18 +33,13 @@ function CardsContainer(props) {
 
     }
 
-    useEffect(() => {
-        const test = document.querySelector('.search-resluts__number');
-        test.textContent = `${dataForRender.length} Results Found`
-    })
-
     return (
         <div className="cards">
             <Searchfield />
             <div className="merchandise-cards">
                 {
                     dataForRender.length > 0 ?
-                        dataForRender.map(filteredData => {
+                        dataForRender.slice(elementsIndexes[0], elementsIndexes[1]).map(filteredData => {
                             return <Card
                                 key={filteredData.id}
                                 id={filteredData.id}

@@ -1,18 +1,56 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setElements, setPageBack, setPageForward } from "../../redux/paginationSlice";
 /* eslint-disable jsx-a11y/anchor-is-valid */
-function Pagination() {
+
+function Pagination(props) {
+  const dispatch = useDispatch();
+  const elementsIndexes = (useSelector(state => state.paginationElements))[useSelector(state => state.paginationElements).length - 1];
+  const pagesTotal = [...Array(Math.ceil(props.cardsData.length / 9)).keys()];
+
+  function changePage(event) {
+    dispatch(
+      setElements({
+        indexesAndActivePage: [(event.target.textContent - 1) * 9, (event.target.textContent * 9), Number(event.target.textContent)]
+      })
+    )
+  }
+
+  function pageBack() {
+    dispatch(
+      setPageBack({
+        pageBackIndexes: [elementsIndexes[0] - 9, elementsIndexes[1] - 9, elementsIndexes[2] - 1]
+      })
+    )
+  }
+
+  function pageForward() {
+    dispatch(
+      setPageForward({
+        pageForwardIndexes: [elementsIndexes[0] + 9, elementsIndexes[1] + 9, elementsIndexes[2] + 1]
+      })
+    )
+  }
   return (
     <div className="pagination">
-      <button className="pagination__button-page-back"></button>
-      <a href="#" className="pagination__page-outer-first">1</a>
+      {
+        elementsIndexes[2] === 1 ? '' : 
+        <button className="pagination__button-page-back" onPointerDown={pageBack}></button>
+      }
       <div className="pagination__main">
-        <a href="#" className="pagination__page">2</a>
-        <a href="#" className="pagination__page">3</a>
-        <a href="#" className="pagination__page">4</a>
-        <a href="#" className="pagination__page active">5</a>
-        <a href="#" className="pagination__page">6</a>
+        {
+          pagesTotal.map(page => {
+            if (page + 1 === elementsIndexes[2]) {
+              return <a href="#" key={page} className="pagination__page active" onPointerDown={changePage}>{page + 1}</a>
+            } else {
+              return <a href="#" key={page} onPointerDown={changePage} className="pagination__page">{page + 1}</a>
+            }
+          })
+        }
       </div>
-      <a href="#" className="pagination__page-outer-last">7</a>
-      <button className="pagination__button-page-forward"></button>
+      {
+        elementsIndexes[2] === pagesTotal.length ? '' :
+        <button className="pagination__button-page-forward" onPointerDown={pageForward}></button>
+      }
     </div>
   )
 }

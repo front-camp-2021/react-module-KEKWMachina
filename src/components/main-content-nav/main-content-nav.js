@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function MainContentNav() {
+function MainContentNav(props) {
     return (
         <div className="main-content-nav">
         <div className="filters-header">
@@ -10,7 +10,7 @@ function MainContentNav() {
           </div>
         </div>
         <div className="search-resluts">
-          <div className="search-resluts__number">7588 Results Found</div>
+          <div className="search-resluts__number">{props.cardsData.length} Results Found</div>
           <Link to="/wishlist">
             <button className="search-resluts__wishlist-button"></button>
           </Link>

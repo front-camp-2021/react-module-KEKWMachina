@@ -48,21 +48,22 @@ function App() {
     isFiltered = true;
   }
 
+
   return (
     <div className="App">
       <Header />
       <Router>
         <Breadcrumbs />
-        <Route exact path="/">
+        <Route exact path="/">  
           {
             dataStatus &&
             <>
-              <MainContentNav />
+              <MainContentNav cardsData={filterData(cardsData, categoriesFilters, brandsFilters, cardsData)} isFiltered={isFiltered}/>
               <div className="main-content">
                 <FiltersContainer />
                 <CardsContainer cardsData={filterData(cardsData, categoriesFilters, brandsFilters, cardsData)} isFiltered={isFiltered} />
               </div>
-              <Pagination />
+              <Pagination cardsData={filterData(cardsData, categoriesFilters, brandsFilters, cardsData)} isFiltered={isFiltered}/>
             </>
           }
         </Route>

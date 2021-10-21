@@ -476,7 +476,6 @@ body {
     margin-top: 10px;
     margin-bottom: 30px;
 
-    
 
     .pagination__button-page-back {
         width: 37px;
@@ -500,49 +499,30 @@ body {
         margin-left: 20px;
     }
 
-    .pagination__page-outer-first {
-        padding: 9px 14px;
-        text-decoration: none;
-        background-color: $button-secondary-color;
-        display: inline-block;
-        border-bottom-left-radius: 50%;
-        border-top-left-radius: 50%;
-        color: $main-text-color;
-    }
-
-    .pagination__page-outer-last {
-        padding: 9px 14px;
-        text-decoration: none;
-        background-color: $button-secondary-color;
-        display: inline-block;
-        border-bottom-right-radius: 50%;
-        border-top-right-radius: 50%;
-        color: $main-text-color;
-    }
-
-    .active {
-        background-color: $button-primary-color;
-    }
-    
-    .pagination__page {
-            padding: 9px 14px;
-            text-decoration: none;
-            background-color: $button-secondary-color;
-            display: inline-block;
-            color: $main-text-color;
-    }
-
     .pagination__main {
         background-color: $button-secondary-color;
-        
+        border-radius: 25px;
+
         .active {
             background-color: $button-primary-color;
             border-radius: 50%;
         }
+        
         .pagination__page {
-            float: left;
+                padding: 9px 14px;
+                width: 10px;
+                text-decoration: none;
+                display: inline-block;
+                color: $main-text-color;
+              
+                .active {
+                    background-color: $button-primary-color;
+                    border-radius: 50%;
+                }
         }
     }
+
+
 }
 
 //Wishlist page
