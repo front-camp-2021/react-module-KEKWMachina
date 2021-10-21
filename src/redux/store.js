@@ -7,9 +7,11 @@ import addToWishlistReducer from './wishlistSlice';
 import itemPageReducer from './itemPageSlice';
 import cardDataReducer from './cardDataSlice';
 import categoriesDataReducer from './categoriesDataSlice';
-import brandsDataSlice from './brandsDataSlice';
-import axiosSlice from './axiosSlice';
-import paginationSlice from './paginationSlice';
+import brandsDataReducer from './brandsDataSlice';
+import axiosReducer from './axiosSlice';
+import paginationReducer from './paginationSlice';
+import minMaxReducer from './minAndMaxPriceSlice'
+
 
 export default configureStore({
 	reducer: {
@@ -21,8 +23,9 @@ export default configureStore({
 		itempage: itemPageReducer,
 		cardsData: cardDataReducer,
 		categoriesData : categoriesDataReducer,
-		brandsData : brandsDataSlice,
-		dataIsReady: axiosSlice, 
-		paginationElements: paginationSlice,
+		brandsData : brandsDataReducer,
+		dataIsReady: axiosReducer, 
+		paginationElements: paginationReducer,
+		priceRange: minMaxReducer,
 	},
 });

@@ -30,6 +30,7 @@ function Pagination(props) {
       })
     )
   }
+
   return (
     <div className="pagination">
       {
@@ -40,9 +41,9 @@ function Pagination(props) {
         {
           pagesTotal.map(page => {
             if (page + 1 === elementsIndexes[2]) {
-              return <a href="#" key={page} className="pagination__page active" onPointerDown={changePage}>{page + 1}</a>
+              return <button key={page} onPointerDown={changePage} className="pagination__page active" >{page + 1}</button>
             } else {
-              return <a href="#" key={page} onPointerDown={changePage} className="pagination__page">{page + 1}</a>
+              return <button key={page} onPointerDown={changePage} className="pagination__page">{page + 1}</button>
             }
           })
         }

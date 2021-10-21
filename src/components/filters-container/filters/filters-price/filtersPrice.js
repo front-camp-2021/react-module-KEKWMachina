@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filterData } from "../../../../redux/cardDataSlice";
 import { findMinMax } from "./findMinMax";
+import { setPriceRange } from "../../../../redux/minAndMaxPriceSlice";
 
 function MultiRangeSlider () {
   const dispatch = useDispatch();
   const cardsData = useSelector(state => state.cardsData);
+  const priceRangeValCurrent = useSelector(state => state.priceRange)[useSelector(state => state.priceRange).length - 1];
   const [min, max] = findMinMax(cardsData[0]);
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-  const minValRef = useRef(min);
-  const maxValRef = useRef(max);
+  const [minVal, maxVal] = priceRangeValCurrent;
+
   const range = useRef(null);
 
   const getPercent = useCallback(
@@ -20,25 +20,22 @@ function MultiRangeSlider () {
 
   useEffect(() => {
     const minPercent = getPercent(minVal);
-    const maxPercent = getPercent(maxValRef.current);
+    const maxPercent = getPercent(maxVal);
 
     if (range.current) {
       range.current.style.left = `${minPercent}%`;
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [minVal, getPercent]);
+  }, [minVal, maxVal, getPercent]);
 
   useEffect(() => {
-    const minPercent = getPercent(minValRef.current);
+    const minPercent = getPercent(minVal);
     const maxPercent = getPercent(maxVal);
 
     if (range.current) {
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [maxVal, getPercent]);
-
-
-  console.log()
+  }, [minVal, maxVal, getPercent]);
 
   return (
     <div className="filters__container">
@@ -49,8 +46,11 @@ function MultiRangeSlider () {
         value={minVal}
         onChange={(event) => {
           const value = Math.min(Number(event.target.value), maxVal - 1);
-          setMinVal(value);
-          minValRef.current = value;
+          dispatch(
+            setPriceRange({
+              priceRange: [value, Number(document.querySelector('.thumb--right').value)],
+            })
+          )
           dispatch(
             filterData({
               thumb: event.target.className,
@@ -68,8 +68,11 @@ function MultiRangeSlider () {
         value={maxVal}
         onChange={(event) => {
           const value = Math.max(Number(event.target.value), minVal + 1);
-          setMaxVal(value);
-          maxValRef.current = value;
+          dispatch(
+            setPriceRange({
+              priceRange: [Number(document.querySelector('.thumb--left').value), value],
+            })
+          )
           dispatch(
             filterData({
               thumb: event.target.className,

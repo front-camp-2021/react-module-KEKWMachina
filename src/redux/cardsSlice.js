@@ -8,10 +8,13 @@ export const cardsSlice = createSlice({
             const searchParameter = action.payload.searchInput;
             state.push(searchParameter);
 		},
+		clearSearchValue: (state) => {
+			state.splice(1, state.length)
+		},
 	},
 });
 
 
-export const { addSearchValue } = cardsSlice.actions;
+export const { addSearchValue, clearSearchValue } = cardsSlice.actions;
 
 export default cardsSlice.reducer;
