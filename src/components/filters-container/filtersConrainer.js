@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoriesData } from "../../redux/categoriesDataSlice";
 import { setBrandsData } from "../../redux/brandsDataSlice";
+import MultiRangeSlider from "./filters/filters-price/filtersPrice";
 
 function FiltersContainer() {
   const dispatch = useDispatch();
@@ -29,16 +30,22 @@ function FiltersContainer() {
           })
         )
       })
-    
-  }, [dispatch]);
 
-  console.log("DATA", categoriesData, brandsData)
+  }, [dispatch]);
 
   return (
     <div className="filters">
       <div className="filters__main">
-        <Filters title="Categories" categoriesData={categoriesData[categoriesData.length - 1]} hasLine={true}/>
-        <Filters title="Brands" categoriesData={brandsData[brandsData.length - 1]} hasLine={false}/>
+        {
+          categoriesData[categoriesData.length - 1] && brandsData[brandsData.length - 1] ?
+            <>
+              <MultiRangeSlider />
+              <Filters title="Categories" categoriesData={categoriesData[categoriesData.length - 1]} hasLine={true} />
+              <Filters title="Brands" categoriesData={brandsData[brandsData.length - 1]} hasLine={false} />
+            </>
+            : ''
+        }
+
       </div>
       <ResetButton />
     </div>

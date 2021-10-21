@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const brandsDataSlice = createSlice({
 	name: 'set-brands-data',
-	initialState: [],
+	initialState: [null],
 	reducers: {
 		setBrandsData: (state, action) => {
             const brandsData = action.payload.brandsData;

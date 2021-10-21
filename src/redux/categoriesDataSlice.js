@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const categoriesDataSlice = createSlice({
 	name: 'set-categories-data',
-	initialState: [],
+	initialState: [null],
 	reducers: {
 		setCategoriesData: (state, action) => {
             const categoriesData = action.payload.categoriesData;

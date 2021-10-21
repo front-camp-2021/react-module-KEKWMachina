@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 function Filters(props) {
     const dispatch = useDispatch();
 
-    console.log(props)
-
     function handleCategoriesChange(event) {
         if (event.target.checked) {
             dispatch(
@@ -58,7 +56,7 @@ function Filters(props) {
                 }
             </div>
             {
-                props.hasLine ? <div className="filters_line"></div> : ""
+                props.hasLine && <div className="filters_line"></div>
             }
         </>
     )

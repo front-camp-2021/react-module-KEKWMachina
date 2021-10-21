@@ -8,6 +8,7 @@ import itemPageReducer from './itemPageSlice';
 import cardDataReducer from './cardDataSlice';
 import categoriesDataReducer from './categoriesDataSlice';
 import brandsDataSlice from './brandsDataSlice';
+import axiosSlice from './axiosSlice';
 
 export default configureStore({
 	reducer: {
@@ -20,5 +21,6 @@ export default configureStore({
 		cardsData: cardDataReducer,
 		categoriesData : categoriesDataReducer,
 		brandsData : brandsDataSlice,
+		dataIsReady: axiosSlice, 
 	},
 });

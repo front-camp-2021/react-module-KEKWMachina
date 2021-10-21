@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { filterData } from './components/filters-container/filters/filterLogic';
 import { filterWishlistItems } from './components/wishlist/filtersWishlistItems';
 import { setCardData } from './redux/cardDataSlice';
+import { dataIsReady } from './redux/axiosSlice';
 import { useEffect } from 'react';
 
 
@@ -20,20 +21,25 @@ function App() {
   const categoriesFilters = useSelector(state => state.categories);
   const brandsFilters = useSelector(state => state.brands);
   const wishlistIDs = useSelector(state => state.wishlist);
-  const activeItem = useSelector(state => state.itempage);
-  const cardsData = useSelector(state => state.cardsData);
-
+  const dataStatus = useSelector(state => state.dataIsReady)[useSelector(state => state.dataIsReady).length - 1];
+  const activeItem = useSelector(state => state.itempage)[useSelector(state => state.itempage).length - 1];
+  const cardsData = useSelector(state => state.cardsData)[useSelector(state => state.cardsData).length - 1];
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get('http://localhost:3001/products')
-    .then(res => {
-      dispatch(
-        setCardData({
-          cardData: res.data
-        })
-      )
-    })
+      .then(res => {
+        dispatch(
+          setCardData({
+            cardData: res.data
+          })
+        )
+        dispatch(
+          dataIsReady({
+            status: true
+          })
+        )
+      })
   }, [dispatch]);
 
   let isFiltered = false;
@@ -48,19 +54,24 @@ function App() {
       <Router>
         <Breadcrumbs />
         <Route exact path="/">
-          <MainContentNav />
-          <div className="main-content">
-            <FiltersContainer />
-            <CardsContainer cardsData={filterData(cardsData[cardsData.length - 1], categoriesFilters, brandsFilters, cardsData[cardsData.length - 1])} isFiltered={isFiltered} />
-          </div>
-          <Pagination />
+          {
+            dataStatus &&
+            <>
+              <MainContentNav />
+              <div className="main-content">
+                <FiltersContainer />
+                <CardsContainer cardsData={filterData(cardsData, categoriesFilters, brandsFilters, cardsData)} isFiltered={isFiltered} />
+              </div>
+              <Pagination />
+            </>
+          }
         </Route>
         <Switch>
           <Route path="/wishlist">
-            <Wishlist cards={filterWishlistItems(wishlistIDs, cardsData[cardsData.length - 1])} />
+            <Wishlist cards={filterWishlistItems(wishlistIDs, cardsData)} />
           </Route>
           <Route path="/:id">
-            <ItemPage card={activeItem[activeItem.length - 1]} />
+            <ItemPage card={activeItem} />
           </Route>
         </Switch>
       </Router>
