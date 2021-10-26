@@ -1,24 +1,23 @@
-function WishlistButton(props) {
-    let buttonText;
-    if(props.isInWishlist && props.displayed) {
-        buttonText = 'REMOVE';
-    } else if (props.isInWishlist) {
-        buttonText = 'ADDED';
-    } else {
-        buttonText = 'WISHLIST';
-    }
+function WishlistButton({ id, isInWishlist, setWishlistItems, displayed }) {
+  let buttonText;
+  if (isInWishlist && displayed) {
+    buttonText = "REMOVE";
+  } else if (isInWishlist) {
+    buttonText = "ADDED";
+  } else {
+    buttonText = "WISHLIST";
+  }
 
-    return (
-        <button 
-        className="merchandise-cards__wishlist-button" 
-        onPointerDown={props.setWishlistItems} 
-        data-added='true' 
-        id={props.id}>
-        {
-            buttonText
-        }
-        </button>
-    )
+  return (
+    <button
+      className="merchandise-cards__wishlist-button"
+      onPointerDown={setWishlistItems}
+      data-added="true"
+      id={id}
+    >
+      {buttonText}
+    </button>
+  );
 }
 
 export default WishlistButton;

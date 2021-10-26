@@ -511,22 +511,20 @@ body {
         }
         
         .pagination__page {
-                height: 37px;
-                width: 37px;
-                text-decoration: none;
-                display: inline-block;
-                color: $main-text-color;
-                border: none;
-                border-radius: 50%;
+            height: 37px;
+            width: 37px;
+            text-decoration: none;
+            display: inline-block;
+            color: $main-text-color;
+            border: none;
+            border-radius: 50%;
               
-                .active {
-                    background-color: $button-primary-color;
-                    border-radius: 50%;
-                }
+            .active {
+                background-color: $button-primary-color;
+                 border-radius: 50%;
+            }
         }
     }
-
-
 }
 
 //Wishlist page
@@ -702,20 +700,20 @@ body {
     border-radius: 4px;
     display: flex;
 
-    .item-container__image-container {
+    &__image-container {
         width: 50%;
         border-radius: 4px;
         display: flex;
         justify-content: flex-end;
 
-        .item-container__image-wrapper {
+        &-wrapper {
             width: 70%;
             background-color: $elements-main-color;
             border-radius: 4px;
             text-align: center;
             margin-right: 20px;
 
-            .item-container__image {
+            &-image {
                 max-width: 200px;
                 max-width: 150px;
                 max-width: 400px;
@@ -725,23 +723,23 @@ body {
         }
     }
 
-    .item-container__description {
+    &__description {
         width: 50%;
         border-radius: 4px;
         background-color: $elements-main-color;
         border-radius: 4px;
 
-        .item-container__description-stats {
+        &-stats {
             list-style-type: none; 
             padding: 0px;
             margin-left: 20px;
         }
 
-        .item-container__item-name {
+        &-name {
             margin-left: 20px;
         }
 
-        .item-container__buy-button {
+        &-button {
             margin-left: 20px;
             background-color: $button-primary-color;
             border: none;
@@ -861,6 +859,65 @@ body {
     
         }
     }
+
+    .pagination {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    
+    
+        .pagination__button-page-back {
+            width: 25px;
+            border: none;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: $button-secondary-color;
+            background-image: url(/img/pagination-arrow-back.svg);
+            background-repeat: no-repeat;
+            background-position: bottom 50% left 50%;
+            cursor: pointer;
+        }
+    
+        .pagination__button-page-forward {
+            width: 25px;
+            border: none;
+            border-radius: 50%;
+            background-color: $button-secondary-color;
+            background-image: url(/img/pagination-arrow-forward.svg);
+            background-repeat: no-repeat;
+            background-position: bottom 50% left 50%;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    
+        .pagination__main {
+            background-color: $button-secondary-color;
+            border-radius: 25px;
+    
+            .active {
+                background-color: $button-primary-color;
+                border-radius: 50%;
+            }
+            
+            .pagination__page {
+                height: 25px;
+                width: 25px;
+                text-decoration: none;
+                display: inline-block;
+                color: $main-text-color;
+                border: none;
+                border-radius: 50%;
+                  
+                .active {
+                    background-color: $button-primary-color;
+                     border-radius: 50%;
+                }
+            }
+        }
+    }
+
 }
 
 @media (max-width: 426px) {

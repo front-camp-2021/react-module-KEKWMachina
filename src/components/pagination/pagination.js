@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setElements, setPageBack, setPageForward } from "../../redux/paginationSlice";
-/* eslint-disable jsx-a11y/anchor-is-valid */
 
 function Pagination(props) {
   const dispatch = useDispatch();
