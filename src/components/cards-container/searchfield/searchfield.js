@@ -1,21 +1,21 @@
 import { useDispatch } from "react-redux";
-import { addSearchValue } from "../../../redux/cardsSlice";
 import { isSearchedStatus } from "../../../redux/isSearchedSlice";
+import { filterSearchInput } from "../../../redux/cardDataSlice";
 
 function Searchfield() {
   const dispatch = useDispatch();
 
   function handleSearchInput(event) {
     dispatch(
-      addSearchValue({
-        searchInput: event.target.value,
-      })
-    );
-    dispatch(
       isSearchedStatus({
         isSearchedStatus: true,
       })
     );
+    dispatch(
+      filterSearchInput({
+        userInput: event.target.value
+      })
+    )
   }
 
   return (

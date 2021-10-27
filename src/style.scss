@@ -518,6 +518,7 @@ body {
             color: $main-text-color;
             border: none;
             border-radius: 50%;
+            cursor: pointer;
               
             .active {
                 background-color: $button-primary-color;
