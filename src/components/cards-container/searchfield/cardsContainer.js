@@ -7,26 +7,17 @@ function CardsContainer({cardsData, isFiltered}) {
   const elementsIndexes = useSelector((state) => state.paginationElements)[
     useSelector((state) => state.paginationElements).length - 1
   ];
-  const userInput = useSelector((state) => state.searchParameter);
   const searchStatus = useSelector((state) => state.searchStatus);
   const isSearched = searchStatus[searchStatus.length - 1];
-
-  function filterInput(cardsArr) {
-    return cardsArr.filter((cardData) =>
-      cardData.title
-        .toLowerCase()
-        .includes(userInput[userInput.length - 1].toLowerCase())
-    );
-  }
 
   let dataForRender = [];
 
   if (isFiltered) {
     dataForRender = cardsData;
   } else if (isSearched) {
-    dataForRender = filterInput(cardsData);
+    dataForRender = cardsData;
   } else if (isFiltered && isSearched) {
-    dataForRender = filterInput(cardsData);
+    dataForRender = cardsData;
   } else {
     dataForRender = cardsData;
   }

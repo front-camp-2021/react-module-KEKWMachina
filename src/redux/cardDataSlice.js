@@ -40,6 +40,15 @@ export const cardsDataSlice = createSlice({
         );
       }
     },
+    filterSearchInput: (state, action) => {
+      state.push(
+        state[0].filter((cardData) =>
+          cardData.title
+            .toLowerCase()
+            .includes(action.payload.userInput.toLowerCase())
+        )
+      );
+    },
   },
   extraReducers: {
     [getCardData.fulfilled]: (state, action) => {
@@ -51,6 +60,7 @@ export const cardsDataSlice = createSlice({
   },
 });
 
-export const { setCardData, filterData } = cardsDataSlice.actions;
+export const { setCardData, filterData, filterSearchInput } =
+  cardsDataSlice.actions;
 
 export default cardsDataSlice.reducer;
