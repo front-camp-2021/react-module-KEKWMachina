@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function ItemPage({ card }) {
+
   return (
     <>
       {card ? (
@@ -38,7 +39,7 @@ function ItemPage({ card }) {
               Back to Purchases
             </button>
           </Link>
-          <h1>No items here yet 🤷‍♂️</h1>
+          <h1>404 Oops, no items here yet 🤷‍♂️</h1>
         </>
       )}
     </>

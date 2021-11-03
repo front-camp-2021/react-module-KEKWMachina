@@ -36,16 +36,11 @@ function App() {
       <Header />
       <Router>
         <Breadcrumbs />
-        <Route exact path="/">
-          {Boolean(cardsData) && (
-            <>
-              <MainContentNav
-                cardsData={filterData(cardsData, categories, brands, cardsData)}
-                isFiltered={isFiltered}
-              />
-              <div className="main-content">
-                <FiltersContainer />
-                <CardsContainer
+        <Switch>
+          <Route exact path="/">
+            {Boolean(cardsData) && (
+              <>
+                <MainContentNav
                   cardsData={filterData(
                     cardsData,
                     categories,
@@ -54,20 +49,38 @@ function App() {
                   )}
                   isFiltered={isFiltered}
                 />
-              </div>
-              <Pagination
-                cardsData={filterData(cardsData, categories, brands, cardsData)}
-                isFiltered={isFiltered}
-              />
-            </>
-          )}
-        </Route>
-        <Switch>
-          <Route path="/wishlist">
+                <div className="main-content">
+                  <FiltersContainer />
+                  <CardsContainer
+                    cardsData={filterData(
+                      cardsData,
+                      categories,
+                      brands,
+                      cardsData
+                    )}
+                    isFiltered={isFiltered}
+                  />
+                </div>
+                <Pagination
+                  cardsData={filterData(
+                    cardsData,
+                    categories,
+                    brands,
+                    cardsData
+                  )}
+                  isFiltered={isFiltered}
+                />
+              </>
+            )}
+          </Route>
+          <Route exact path="/wishlist">
             <Wishlist cards={filterWishlistItems(wishlist, cardsData)} />
           </Route>
-          <Route path="/:id">
+          <Route exact path="/:id">
             <ItemPage card={activeItem} />
+          </Route>
+          <Route>
+            <h1 className="page-not-found">Oops, wrong page 404</h1>
           </Route>
         </Switch>
       </Router>

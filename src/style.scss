@@ -373,6 +373,7 @@ body {
                 position: relative;
                 text-align: center;
                 height: 400px;
+            
                 background-color: $elements-main-color;
                 border-radius: 4px;
                 margin-bottom: 20px;
@@ -380,63 +381,72 @@ body {
                 .merchandise-cards__image {
                     margin-top: 20px;
                     margin-bottom: 40px;
-                    max-height: 200px;
-                    max-width: 200px;
-                   
+                    max-height: 180px;
+                    max-width: 180px;
                 }
-
+            
                 .merchandise-cards__rating-and-price {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     margin: 0% 10% 0% 10%;
-
+                    
+            
                     .merchandise-cards__rating {
+                        bottom: 150px;
+                        position: absolute;
                         color: $elements-main-color;
                         padding: 2% 10% 2% 5%;
                         background-color: $button-primary-color;
                         background-image: url(/img/rating-star.svg);
                         background-repeat: no-repeat;
                         background-position: bottom 50% left 90%;
+                        background-size: 20px;
                         border-radius: 4px;
-                        background-size: 25%;
                         font-size: 15px;
                     }
+            
+                    .merchandise-cards__price {
+                        right: 25px;
+                        bottom: 155px;
+                        position: absolute;
+                    }
                 }
-
+            
                 .merchandise-cards__item-descriptions {
                     list-style-type:none; 
                     text-align: start;
                     color: $main-text-color;
                     padding: 0% 0% 2% 7%;
                     margin: 2%;
+                    bottom: 60px;
+                    position: absolute;
             
                     .merchandise-cards__item-name {
                         font-size: 16px;
                         line-height: 19px;
                         font-weight: $font-weight-medium;
-                        text-decoration: none;
+                        cursor: pointer;
                     }
-
+            
                     .merchandise-cards__item-description {
                         font-size: 12px;
                         line-height: 14px;     
                         font-weight: $font-weight-light;
-                        
                     }
-
+            
                     .merchandise-cards__item-page-link {
                         text-decoration: none;
                     }
                 }
-
+            
                 .merchandise-cards__buttons {
                     position: absolute;
                     bottom: 0px; 
                     width: 100%;
                     height: 10%;
                     display: flex;
-
+            
                     .merchandise-cards__wishlist-button {
                         align-items: center;
                         width: 50%;
@@ -447,9 +457,8 @@ body {
                         background-size: 10%;
                         background-repeat: no-repeat;
                         background-position: left 15% bottom 50%;
-                        cursor: pointer;
                     }
-
+            
                     .merchandise-cards__add-to-cart-button {
                         align-items: center;
                         border: none;
@@ -461,7 +470,6 @@ body {
                         background-size: 10%;
                         background-repeat: no-repeat;
                         background-position: left 5% bottom 50%;
-                        cursor: pointer;
                     }
                 }
             }
@@ -750,6 +758,10 @@ body {
             color: $elements-main-color;
         }
     }
+}
+
+.page-not-found {
+    text-align: center;
 }
 
 @media (max-width: 1025px) {
