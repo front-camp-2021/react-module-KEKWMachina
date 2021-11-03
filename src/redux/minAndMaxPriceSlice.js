@@ -2,8 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const minMaxSlice = createSlice({
   name: "set-price-range",
-  initialState: [[100, 50000]],
+  initialState: [[0, 0]],
   reducers: {
+    setInitialPriceRange: (state, action) => {
+      const inintialPriceRange = action.payload.inintialPriceRange;
+      state.push(inintialPriceRange);
+    },
     setPriceRange: (state, action) => {
       const priceRange = action.payload.priceRange;
       state.push(priceRange);
@@ -14,6 +18,6 @@ export const minMaxSlice = createSlice({
   },
 });
 
-export const { setPriceRange, clearPriceRange } = minMaxSlice.actions;
+export const { setPriceRange, clearPriceRange, setInitialPriceRange } = minMaxSlice.actions;
 
 export default minMaxSlice.reducer;

@@ -12,10 +12,7 @@ export function filterData(productsArr = [], categoryFilters = [], brandFilters 
     const result = [];
 
     for (const filter of filters) {
-      console.log(filter);
-      console.log(filters)
       for (const product of productsArr) {
-        console.log(product[propertyName].toLowerCase().includes(filter.toLowerCase().split(' ').join('_')))
         if (product[propertyName].toLowerCase().includes(filter.toLowerCase().split(' ').join('_'))) {
           result.push(product);
         }

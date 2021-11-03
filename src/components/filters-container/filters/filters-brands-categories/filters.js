@@ -2,6 +2,7 @@ import Checkbox from "../checkbox/checkbox";
 import { addCategory, removeCategory } from "../../../../redux/categoriesSlice";
 import { addBrand, removeBrand } from "../../../../redux/brandsSlice";
 import { useDispatch } from "react-redux";
+import { setElements } from "../../../../redux/paginationSlice";
 
 function Filters({title, categoriesData, hasLine}) {
   const dispatch = useDispatch();
@@ -20,6 +21,11 @@ function Filters({title, categoriesData, hasLine}) {
         })
       );
     }
+    dispatch(
+      setElements({
+        indexesAndActivePage: [0, 9, 1]
+      })
+    );
   }
 
   function handleBrandsChange(event) {
@@ -36,6 +42,11 @@ function Filters({title, categoriesData, hasLine}) {
         })
       );
     }
+    dispatch(
+      setElements({
+        indexesAndActivePage: [0, 9, 1]
+      })
+    );
   }
 
   const changeHandler =

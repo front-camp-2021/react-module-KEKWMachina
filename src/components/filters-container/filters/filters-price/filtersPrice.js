@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { findMinMax } from "./findMinMax";
 import handleLeftInput from "./changeHanlers/handleThumbLeft";
 import handleRightInput from "./changeHanlers/handleThumbRight";
+import { setInitialPriceRange } from "../../../../redux/minAndMaxPriceSlice";
+import { setElements } from "../../../../redux/paginationSlice";
 
 function MultiRangeSlider() {
   const dispatch = useDispatch();
@@ -21,6 +23,15 @@ function MultiRangeSlider() {
   );
 
   useEffect(() => {
+    dispatch(
+      setInitialPriceRange({
+        inintialPriceRange: findMinMax(cardsData[0]),
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (range.current) {
       const minPercent = getPercent(minVal);
       const maxPercent = getPercent(maxVal);
@@ -34,7 +45,7 @@ function MultiRangeSlider() {
     if (range.current) {
       const minPercent = getPercent(minVal);
       const maxPercent = getPercent(maxVal);
-      
+
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
   }, [minVal, maxVal, getPercent]);
@@ -47,6 +58,11 @@ function MultiRangeSlider() {
         max={max}
         value={minVal}
         onChange={(event) => {
+          dispatch(
+            setElements({
+              indexesAndActivePage: [0, 9, 1],
+            })
+          );
           return handleLeftInput(event, dispatch, maxVal);
         }}
         className="thumb thumb--left"
@@ -57,6 +73,11 @@ function MultiRangeSlider() {
         max={max}
         value={maxVal}
         onChange={(event) => {
+          dispatch(
+            setElements({
+              indexesAndActivePage: [0, 9, 1],
+            })
+          );
           handleRightInput(event, dispatch, minVal);
         }}
         className="thumb thumb--right"

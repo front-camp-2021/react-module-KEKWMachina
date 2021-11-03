@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { isSearchedStatus } from "../../../redux/isSearchedSlice";
 import { filterSearchInput } from "../../../redux/cardDataSlice";
+import { setElements } from "../../../redux/paginationSlice";
 
 function Searchfield() {
   const dispatch = useDispatch();
@@ -15,7 +16,12 @@ function Searchfield() {
       filterSearchInput({
         userInput: event.target.value
       })
-    )
+    );
+    dispatch(
+      setElements({
+        indexesAndActivePage: [0, 9, 1]
+      })
+    );
   }
 
   return (
