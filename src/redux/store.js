@@ -10,6 +10,7 @@ import categoriesDataReducer from "./categoriesDataSlice";
 import brandsDataReducer from "./brandsDataSlice";
 import paginationReducer from "./paginationSlice";
 import minMaxReducer from "./minAndMaxPriceSlice";
+import searchInputReducer from "./searchInputSlice";
 
 export default configureStore({
   reducer: {
@@ -24,5 +25,6 @@ export default configureStore({
     brandsData: brandsDataReducer,
     paginationElements: paginationReducer,
     priceRange: minMaxReducer,
+    searchInput: searchInputReducer,
   },
 });

@@ -13,6 +13,7 @@ import { filterData } from "./components/filters-container/filters/filterLogic";
 import { filterWishlistItems } from "./components/wishlist/filtersWishlistItems";
 import { useEffect } from "react";
 import { getCardData } from "./redux/cardDataSlice";
+import { filterUserInput } from "./helper-functions/filterUserInput";
 
 function App() {
   const { categories, brands, wishlist } = useSelector((state) => state);
@@ -23,6 +24,10 @@ function App() {
   const cardsData = useSelector((state) => state.cardsData)[
     useSelector((state) => state.cardsData).length - 1
   ];
+  const searchInput = useSelector((state) => state.searchInput)[
+    useSelector((state) => state.searchInput).length - 1
+  ];
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,10 +47,10 @@ function App() {
               <>
                 <MainContentNav
                   cardsData={filterData(
-                    cardsData,
+                    filterUserInput(searchInput, cardsData),
                     categories,
                     brands,
-                    cardsData
+                    filterUserInput(searchInput, cardsData)
                   )}
                   isFiltered={isFiltered}
                 />
@@ -53,20 +58,20 @@ function App() {
                   <FiltersContainer />
                   <CardsContainer
                     cardsData={filterData(
-                      cardsData,
+                      filterUserInput(searchInput, cardsData),
                       categories,
                       brands,
-                      cardsData
+                      filterUserInput(searchInput, cardsData)
                     )}
                     isFiltered={isFiltered}
                   />
                 </div>
                 <Pagination
                   cardsData={filterData(
-                    cardsData,
+                    filterUserInput(searchInput, cardsData),
                     categories,
                     brands,
-                    cardsData
+                    filterUserInput(searchInput, cardsData)
                   )}
                   isFiltered={isFiltered}
                 />

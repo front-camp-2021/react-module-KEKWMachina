@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { isSearchedStatus } from "../../../redux/isSearchedSlice";
-import { filterSearchInput } from "../../../redux/cardDataSlice";
 import { setElements } from "../../../redux/paginationSlice";
+import { setUserInput } from "../../../redux/searchInputSlice";
 
 function Searchfield() {
   const dispatch = useDispatch();
@@ -9,19 +9,20 @@ function Searchfield() {
   function handleSearchInput(event) {
     dispatch(
       isSearchedStatus({
-        isSearchedStatus: true,
+        isSearchedStatus: true
       })
     );
     dispatch(
-      filterSearchInput({
+      setUserInput({
         userInput: event.target.value
       })
-    );
+    )
     dispatch(
       setElements({
         indexesAndActivePage: [0, 9, 1]
       })
     );
+
   }
 
   return (
@@ -29,7 +30,7 @@ function Searchfield() {
       <input
         className="searchfield__input"
         placeholder="Search"
-        onInput={handleSearchInput}
+        onChange={handleSearchInput}
       ></input>
     </div>
   );

@@ -13,7 +13,7 @@ export function filterData(productsArr = [], categoryFilters = [], brandFilters 
 
     for (const filter of filters) {
       for (const product of productsArr) {
-        if (product[propertyName].toLowerCase().includes(filter.toLowerCase().split(' ').join('_'))) {
+        if (product[propertyName].split('-').join('').toLowerCase().includes(filter.toLowerCase().split(' ').join('_'))) {
           result.push(product);
         }
       }
