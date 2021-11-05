@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBrandsData } from "../../redux/brandsDataSlice";
 import { getCategoriesData } from "../../redux/categoriesDataSlice";
-import MultiRangeSlider from "./filters/filters-price/filtersPrice";
+import MultiRangeSlider from "./filters/filters-price/filters-price";
 
 function FiltersContainer() {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
-import Searchfield from "./searchfield";
-import Card from "../card/card";
+import Searchfield from "./searchfield/searchfield";
+import Card from "./card/card";
 import React from "react";
 import { useSelector } from "react-redux";
 

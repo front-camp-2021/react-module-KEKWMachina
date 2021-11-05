@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { findMinMax } from "./findMinMax";
-import handleLeftInput from "./changeHanlers/handleThumbLeft";
-import handleRightInput from "./changeHanlers/handleThumbRight";
+import { findMinMax } from "../../../../helper-functions/findMinMax";
+import handleLeftInput from "../../../../helper-functions/handleThumbLeft";
+import handleRightInput from "../../../../helper-functions/handleThumbRight";
 import { setInitialPriceRange } from "../../../../redux/minAndMaxPriceSlice";
 import { setElements } from "../../../../redux/paginationSlice";
 

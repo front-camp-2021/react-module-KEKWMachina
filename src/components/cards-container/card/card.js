@@ -64,7 +64,7 @@ function Card({ img, id, rating, title, price, displayed }) {
             className="merchandise-cards__item-name"
             onPointerDown={setActiveItem}
           >
-            {title}
+            {title.slice(0, 40)}...
           </li>
         </Link>
         <li className="merchandise-cards__item-description">

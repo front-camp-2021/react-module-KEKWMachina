@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearBrands } from "../../../redux/brandsSlice";
 import { clearCategories } from "../../../redux/categoriesSlice";
 import { clearPriceRange } from "../../../redux/minAndMaxPriceSlice";
-import { findMinMax } from "../filters/filters-price/findMinMax";
+import { findMinMax } from "../../../helper-functions/findMinMax";
 import { filterData } from "../../../redux/cardDataSlice";
 import { clearSearchValue } from "../../../redux/cardsSlice";
 

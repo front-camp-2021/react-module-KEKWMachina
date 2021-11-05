@@ -1,5 +1,5 @@
-import FiltersContainer from "./components/filters-container/filtersConrainer";
-import CardsContainer from "./components/cards-container/searchfield/cardsContainer";
+import FiltersContainer from "./components/filters-container/filtersContainer";
+import CardsContainer from "./components/cards-container/cardsContainer";
 import Pagination from "./components/pagination/pagination";
 import Header from "./components/header/header";
 import Breadcrumbs from "./components/breadcrumbs/breadcrumbs";
@@ -9,8 +9,8 @@ import ItemPage from "./components/itempage/itempage";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { filterData } from "./components/filters-container/filters/filterLogic";
-import { filterWishlistItems } from "./components/wishlist/filtersWishlistItems";
+import { filterData } from "./helper-functions/filterLogic";
+import { filterWishlistItems } from "./helper-functions/filtersWishlistItems";
 import { useEffect } from "react";
 import { getCardData } from "./redux/cardDataSlice";
 import { filterUserInput } from "./helper-functions/filterUserInput";

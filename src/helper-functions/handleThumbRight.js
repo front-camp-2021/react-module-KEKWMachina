@@ -1,5 +1,5 @@
-import { setPriceRange } from "../../../../../redux/minAndMaxPriceSlice";
-import { filterData } from "../../../../../redux/cardDataSlice";
+import { setPriceRange } from "../redux/minAndMaxPriceSlice";
+import { filterData } from "../redux/cardDataSlice";
 
 export default function handleRightInput(event, dispatchFn, minVal) {
   const value = Math.max(Number(event.target.value), minVal + 1);
