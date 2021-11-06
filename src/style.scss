@@ -280,8 +280,6 @@ body {
         border-bottom: 2px solid $button-secondary-color;
         width: 95%;
       }
-<<<<<<< HEAD
-=======
 
       .filters__price-range {
         margin-left: 10px;
@@ -302,20 +300,17 @@ body {
           cursor: pointer;
         }
       }
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
+
 
       .filters__category {
         margin-left: 10px;
 
         .filters__checkbox-square {
           cursor: pointer;
-<<<<<<< HEAD
-        }
 
+        }
         .filters__checkbox-label {
           cursor: pointer; 
-=======
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
         }
       }
     }
@@ -336,19 +331,11 @@ body {
 
   .cards {
     width: 70%;
-<<<<<<< HEAD
 
     .searchfield {
       width: 100%;
       filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
 
-=======
-
-    .searchfield {
-      width: 100%;
-      filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
-
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
       .searchfield__input {
         box-sizing: border-box;
         margin: 5px 0px 20px 0px;
@@ -470,10 +457,7 @@ body {
             background-size: 10%;
             background-repeat: no-repeat;
             background-position: left 15% bottom 50%;
-<<<<<<< HEAD
             cursor: pointer;
-=======
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
           }
 
           .merchandise-cards__add-to-cart-button {
@@ -487,10 +471,7 @@ body {
             background-size: 10%;
             background-repeat: no-repeat;
             background-position: left 5% bottom 50%;
-<<<<<<< HEAD
             cursor: pointer;
-=======
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
           }
         }
       }
@@ -665,7 +646,6 @@ body {
           text-decoration: none;
         }
       }
-<<<<<<< HEAD
 
       .merchandise-cards__buttons {
         position: absolute;
@@ -674,16 +654,6 @@ body {
         height: 10%;
         display: flex;
 
-=======
-
-      .merchandise-cards__buttons {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        height: 10%;
-        display: flex;
-
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
         .merchandise-cards__wishlist-button {
           align-items: center;
           width: 50%;
@@ -790,7 +760,6 @@ body {
 
 .page-not-found {
   text-align: center;
-<<<<<<< HEAD
 }
 
 @media (max-width: 1250px) {
@@ -850,67 +819,6 @@ body {
               font-size: 9px;
             }
 
-=======
-}
-
-@media (max-width: 1250px) {
-  .main-content {
-    height: 1295px;
-
-    .filters {
-      width: 25%;
-    }
-
-    .cards {
-      width: 75%;
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .header {
-    .header__logo {
-      width: 70px;
-      height: 50px;
-    }
-
-    .header__text {
-      font-size: 40px;
-      line-height: 20px;
-      color: $secondary-text-color;
-    }
-  }
-
-  .main-content {
-    height: 1885px;
-
-    .filters {
-      width: 30%;
-    }
-
-    .cards {
-      width: 70%;
-
-      .merchandise-cards {
-        display: grid;
-        grid-template-columns: 49% 49%;
-        grid-template-rows: 1fr 1fr;
-        gap: 0rem 8px;
-        width: 100%;
-
-        .merchandise-cards__card {
-          height: 350px;
-
-          .merchandise-cards__image {
-            max-height: 130px !important;
-          }
-
-          .merchandise-cards__buttons {
-            .merchandise-cards__wishlist-button {
-              font-size: 9px;
-            }
-
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
             .merchandise-cards__add-to-cart-button {
               font-size: 9px;
             }
@@ -990,8 +898,6 @@ body {
           border-radius: 50%;
         }
       }
-<<<<<<< HEAD
-=======
     }
   }
 }
@@ -1001,21 +907,8 @@ body {
     .header__logo {
       width: 70px;
       height: 50px;
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
-    }
-  }
-}
-
-<<<<<<< HEAD
-@media (max-width: 769px) {
-  .header {
-    .header__logo {
-      width: 70px;
-      height: 50px;
     }
 
-=======
->>>>>>> 542b41c115397c6790d7e527d125320dcb12ed2d
     .header__text {
       font-size: 40px;
       line-height: 20px;
