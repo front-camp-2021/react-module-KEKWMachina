@@ -3,9 +3,9 @@ function Checkbox({title, checkboxName, handleChange}) {
     
     return (
         <>
-            <div className="filters__checkbox" onChange={handleChange}>
-                <input type="checkbox" id={title} name={checkboxName} className="filters__checkbox-square"></input>
-                <label htmlFor="scales">{checkboxName}</label>
+            <div className="filters__checkbox" onClick={handleChange}>
+                <input type="checkbox" id={checkboxName} name={checkboxName} className="filters__checkbox-square"></input>
+                <label htmlFor={checkboxName} className="filters__checkbox-label">{checkboxName}</label>
             </div>
         </>
     )
