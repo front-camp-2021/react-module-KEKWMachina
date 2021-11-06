@@ -8,13 +8,15 @@ function Filters({title, categoriesData, hasLine}) {
   const dispatch = useDispatch();
 
   function handleCategoriesChange(event) {
-    if (event.target.checked) {
+    if (event.target.checked && event.target.type === "checkbox") {
+      console.log('Added')
       dispatch(
         addCategory({
           category: event.target.name,
         })
       );
-    } else {
+    } else if (!event.target.checked && event.target.type === "checkbox") {
+      console.log('Removed')
       dispatch(
         removeCategory({
           category: event.target.name,
@@ -29,13 +31,13 @@ function Filters({title, categoriesData, hasLine}) {
   }
 
   function handleBrandsChange(event) {
-    if (event.target.checked) {
+    if (event.target.checked && event.target.type === "checkbox") {
       dispatch(
         addBrand({
           category: event.target.name,
         })
       );
-    } else {
+    } else if (!event.target.checked && event.target.type === "checkbox"){
       dispatch(
         removeBrand({
           category: event.target.name,

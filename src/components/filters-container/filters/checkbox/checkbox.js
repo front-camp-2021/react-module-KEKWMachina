@@ -1,4 +1,3 @@
-
 function Checkbox({title, checkboxName, handleChange}) {
     
     return (
