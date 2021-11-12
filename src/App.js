@@ -36,6 +36,13 @@ function App() {
 
   let isFiltered = categories.length > 0 || brands.length > 0;
 
+  const cardProps = cardsData ? filterData(
+    filterUserInput(searchInput, cardsData),
+    categories,
+    brands,
+    filterUserInput(searchInput, cardsData)
+  ) : [];
+
   return (
     <div className="App">
       <Header />
@@ -46,33 +53,18 @@ function App() {
             {Boolean(cardsData) && (
               <>
                 <MainContentNav
-                  cardsData={filterData(
-                    filterUserInput(searchInput, cardsData),
-                    categories,
-                    brands,
-                    filterUserInput(searchInput, cardsData)
-                  )}
+                  cardsData={cardProps}
                   isFiltered={isFiltered}
                 />
                 <div className="main-content">
                   <FiltersContainer />
                   <CardsContainer
-                    cardsData={filterData(
-                      filterUserInput(searchInput, cardsData),
-                      categories,
-                      brands,
-                      filterUserInput(searchInput, cardsData)
-                    )}
+                    cardsData={cardProps}
                     isFiltered={isFiltered}
                   />
                 </div>
                 <Pagination
-                  cardsData={filterData(
-                    filterUserInput(searchInput, cardsData),
-                    categories,
-                    brands,
-                    filterUserInput(searchInput, cardsData)
-                  )}
+                  cardsData={cardProps}
                   isFiltered={isFiltered}
                 />
               </>
