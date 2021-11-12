@@ -9,13 +9,18 @@ function MainContentNav(props) {
           <button className="filters-header__filters-hide-button"></button>
         </div>
       </div>
-      <div className="search-resluts">
-        <div className="search-resluts__number">
+      <div className="search-results">
+        <div className="search-results__number">
           {props.cardsData.length} Results Found
         </div>
-        <Link to="/wishlist">
-          <button className="search-resluts__wishlist-button"></button>
+        <div>
+        <Link to="/discounts">
+          <button className="search-results__discounted-button"></button>
         </Link>
+        <Link to="/wishlist">
+          <button className="search-results__wishlist-button"></button>
+        </Link>
+        </div>
       </div>
     </div>
   );

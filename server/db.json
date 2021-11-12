@@ -10,7 +10,8 @@
       "rating": 2.89,
       "price": 15999,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "discount": 15
     },
     {
       "id": "qeagrlm9lrkr9kjkav",
@@ -57,7 +58,8 @@
       "rating": 3.2,
       "price": 22500,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "discount": 5
     },
     {
       "id": "4g0lv7ii7ytkr9kjkav",
@@ -83,7 +85,8 @@
       "rating": 1.57,
       "price": 81000,
       "category": "laptops",
-      "brand": "apple"
+      "brand": "apple",
+      "discount": 12
     },
     {
       "id": "g9amcjezcmkr9kjkav",
@@ -130,7 +133,8 @@
       "rating": 2.2,
       "price": 25500,
       "category": "laptops",
-      "brand": "asus"
+      "brand": "asus",
+      "discount": 10
     },
     {
       "id": "n03aecr0qrokr9kjkav",
@@ -188,7 +192,8 @@
       "rating": 1.02,
       "price": 17000,
       "category": "laptops",
-      "brand": "dell"
+      "brand": "dell",
+      "discount": 15
     },
     {
       "id": "ur7ngd675jckr9kjkav",
@@ -234,7 +239,8 @@
       "rating": 1.57,
       "price": 15500,
       "category": "laptops",
-      "brand": "dell"
+      "brand": "dell",
+      "discount": 7
     },
     {
       "id": "4rtmbvjt2lekr9kjkav",
@@ -291,7 +297,8 @@
       "rating": 5,
       "price": 8300,
       "category": "laptops",
-      "brand": "lenovo"
+      "brand": "lenovo",
+      "discount": 6
     },
     {
       "id": "je1r13p0xckr9kjkav",

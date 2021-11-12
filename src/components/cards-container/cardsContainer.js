@@ -3,24 +3,12 @@ import Card from "./card/card";
 import React from "react";
 import { useSelector } from "react-redux";
 
-function CardsContainer({cardsData, isFiltered}) {
+function CardsContainer({cardsData}) {
   const elementsIndexes = useSelector((state) => state.paginationElements)[
     useSelector((state) => state.paginationElements).length - 1
   ];
-  const searchStatus = useSelector((state) => state.searchStatus);
-  const isSearched = searchStatus[searchStatus.length - 1];
 
-  let dataForRender = [];
-
-  if (isFiltered) {
-    dataForRender = cardsData;
-  } else if (isSearched) {
-    dataForRender = cardsData;
-  } else if (isFiltered && isSearched) {
-    dataForRender = cardsData;
-  } else {
-    dataForRender = cardsData;
-  }
+  const dataForRender = cardsData;
 
   return (
     <div className="cards">
@@ -37,6 +25,7 @@ function CardsContainer({cardsData, isFiltered}) {
                 rating={filteredData.rating}
                 price={filteredData.price}
                 title={filteredData.title}
+                discount={filteredData.discount}
               />
             ))
         ) : (

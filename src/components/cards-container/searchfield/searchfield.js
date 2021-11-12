@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { isSearchedStatus } from "../../../redux/isSearchedSlice";
 import { setElements } from "../../../redux/paginationSlice";
 import { setUserInput } from "../../../redux/searchInputSlice";
 
@@ -7,11 +6,6 @@ function Searchfield() {
   const dispatch = useDispatch();
 
   function handleSearchInput(event) {
-    dispatch(
-      isSearchedStatus({
-        isSearchedStatus: true
-      })
-    );
     dispatch(
       setUserInput({
         userInput: event.target.value

@@ -7,7 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { addDisplayedCard } from "../../../redux/itemPageSlice";
 
-function Card({ img, id, rating, title, price, displayed }) {
+function Card({ img, id, rating, title, price, displayed, discount }) {
   const dispatch = useDispatch();
   const wishlistCards = useSelector((state) => state.wishlist);
   const isInWishlist = wishlistCards.includes(id);
@@ -56,7 +56,14 @@ function Card({ img, id, rating, title, price, displayed }) {
       <img src={img} className="merchandise-cards__image" alt={title}></img>
       <div className="merchandise-cards__rating-and-price">
         <div className="merchandise-cards__rating">{rating}</div>
-        <div className="merchandise-cards__price">₴{price}</div>
+        {discount ? (
+          <div className="merchandise-cards__price">
+            ₴{Math.ceil(price - (price / 100) * discount)} /{" "}
+            <del>{price}</del>
+          </div>
+        ) : (
+          <div className="merchandise-cards__price">₴{price}</div>
+        )}
       </div>
       <ul className="merchandise-cards__item-descriptions">
         <Link to={`/id:${id}`} className="merchandise-cards__item-page-link">

@@ -5,6 +5,7 @@ import Header from "./components/header/header";
 import Breadcrumbs from "./components/breadcrumbs/breadcrumbs";
 import MainContentNav from "./components/main-content-nav/main-content-nav";
 import Wishlist from "./components/wishlist/wishlist";
+import Discounts from "./components/discounts/discounts";
 import ItemPage from "./components/itempage/itempage";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -14,6 +15,7 @@ import { filterWishlistItems } from "./helper-functions/filtersWishlistItems";
 import { useEffect } from "react";
 import { getCardData } from "./redux/cardDataSlice";
 import { filterUserInput } from "./helper-functions/filterUserInput";
+import { findDiscountedItems } from "./helper-functions/findDiscountedItems";
 
 function App() {
   const { categories, brands, wishlist } = useSelector((state) => state);
@@ -34,8 +36,6 @@ function App() {
     dispatch(getCardData());
   }, [dispatch]);
 
-  let isFiltered = categories.length > 0 || brands.length > 0;
-
   const cardProps = cardsData ? filterData(
     filterUserInput(searchInput, cardsData),
     categories,
@@ -54,24 +54,24 @@ function App() {
               <>
                 <MainContentNav
                   cardsData={cardProps}
-                  isFiltered={isFiltered}
                 />
                 <div className="main-content">
                   <FiltersContainer />
                   <CardsContainer
                     cardsData={cardProps}
-                    isFiltered={isFiltered}
                   />
                 </div>
                 <Pagination
                   cardsData={cardProps}
-                  isFiltered={isFiltered}
                 />
               </>
             )}
           </Route>
           <Route exact path="/wishlist">
             <Wishlist cards={filterWishlistItems(wishlist, cardsData)} />
+          </Route>
+          <Route exact path="/discounts">
+            <Discounts cards={findDiscountedItems(cardProps)} />
           </Route>
           <Route exact path="/:id">
             <ItemPage card={activeItem} />

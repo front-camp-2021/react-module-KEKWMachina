@@ -9,14 +9,12 @@ function Filters({title, categoriesData, hasLine}) {
 
   function handleCategoriesChange(event) {
     if (event.target.checked && event.target.type === "checkbox") {
-      console.log('Added')
       dispatch(
         addCategory({
           category: event.target.name,
         })
       );
     } else if (!event.target.checked && event.target.type === "checkbox") {
-      console.log('Removed')
       dispatch(
         removeCategory({
           category: event.target.name,

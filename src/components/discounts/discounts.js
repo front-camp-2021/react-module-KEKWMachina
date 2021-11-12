@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import Card from "../cards-container/card/card";
-import { useDispatch } from "react-redux";
-import { clearState } from "../../redux/wishlistSlice";
 
-function Wishlist(props) {
-  const dispatch = useDispatch();
-  let cardsData = props.cards;
+function Discounts({ cards }) {
+  let cardsData = cards;
 
   return (
     <>
@@ -15,12 +12,6 @@ function Wishlist(props) {
             Back to Purchases
           </button>
         </Link>
-        <button
-          className="wishlist-nav-container__wishlist-clear-btn"
-          onClick={() => dispatch(clearState({}))}
-        >
-          ❌ Clear Wishlist
-        </button>
       </div>
 
       <div className="wishlist-cards-wrapper">
@@ -51,4 +42,4 @@ function Wishlist(props) {
   );
 }
 
-export default Wishlist;
+export default Discounts;
