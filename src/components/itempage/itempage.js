@@ -1,10 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-function ItemPage({ card }) {
+function ItemPage() {
+  const BACKEND_URL = "http://localhost:3001/";
+  const products = new URL("products", BACKEND_URL);
+  const cardsData = useSelector(state => state.cardsData[0]);
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+    getCard();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function getCard() {
+    if (cardsData) {
+      setLoading(true);
+      setCard(cardsData.find(card => card.id === id));
+      setLoading(false);
+      return cardsData.find(card => card.id === id);
+    } else {
+      setLoading(true);
+      products.searchParams.set("q", id);
+      const response = await fetch(products);
+      const data = await response.json();
+      setCard(data[0]);
+      setLoading(false);
+      return data[0]
+    }
+  };
 
   return (
     <>
-      {card ? (
+      {!loading && card ? (
         <>
           <Link to="/">
             <button className="wishlist-nav-container__wishlist-back-btn">
@@ -16,7 +46,7 @@ function ItemPage({ card }) {
               <div className="item-container__image-container-wrapper">
                 <img
                   className="item-container__image-container-image"
-                  src={card.img}
+                  src={card.images[0]}
                   alt={card.title}
                 ></img>
               </div>
@@ -39,7 +69,7 @@ function ItemPage({ card }) {
               Back to Purchases
             </button>
           </Link>
-          <h1>404 Oops, no items here yet 🤷‍♂️</h1>
+          <h1>Item not found</h1>
         </>
       )}
     </>

@@ -73,7 +73,7 @@ function App() {
           <Route exact path="/discounts">
             <Discounts cards={findDiscountedItems(cardProps)} />
           </Route>
-          <Route exact path="/:id">
+          <Route exact path="/product-:id">
             <ItemPage card={activeItem} />
           </Route>
           <Route>

@@ -13,7 +13,7 @@ export const minMaxSlice = createSlice({
       state.push(priceRange);
     },
     clearPriceRange: (state) => {
-      state.splice(1, state.length);
+      state.splice(2, state.length);
     },
   },
 });
