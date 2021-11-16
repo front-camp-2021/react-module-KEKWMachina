@@ -66,7 +66,7 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
         )}
       </div>
       <ul className="merchandise-cards__item-descriptions">
-        <Link to={`/id:${id}`} className="merchandise-cards__item-page-link">
+        <Link to={`/product-${id}`} className="merchandise-cards__item-page-link">
           <li
             className="merchandise-cards__item-name"
             onPointerDown={setActiveItem}
