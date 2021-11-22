@@ -14,7 +14,6 @@ function MultiRangeSlider() {
   ];
   const [min, max] = findMinMax(cardsData[0]);
   const [minVal, maxVal] = priceRangeValCurrent;
-
   const range = useRef(null);
 
   const getPercent = useCallback(
@@ -63,7 +62,7 @@ function MultiRangeSlider() {
               indexesAndActivePage: [0, 9, 1],
             })
           );
-          return handleLeftInput(event, dispatch, maxVal);
+          handleLeftInput(event, dispatch, maxVal);
         }}
         className="thumb thumb--left"
       />

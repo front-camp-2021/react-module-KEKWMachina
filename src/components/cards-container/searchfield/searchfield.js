@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setElements } from "../../../redux/paginationSlice";
 import { setUserInput } from "../../../redux/searchInputSlice";
+import { debounce } from "../../../helper-functions/debounce";
 
 function Searchfield() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function Searchfield() {
       <input
         className="searchfield__input"
         placeholder="Search"
-        onChange={handleSearchInput}
+        onChange={debounce(handleSearchInput, 200)}
       ></input>
     </div>
   );

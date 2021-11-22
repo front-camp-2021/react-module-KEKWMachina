@@ -6,11 +6,18 @@ import {
 } from "../../../redux/wishlistSlice";
 import { Link } from "react-router-dom";
 import { addDisplayedCard } from "../../../redux/itemPageSlice";
+import resetFilters from "../../../helper-functions/resetFilters";
+import { clearPriceRange } from "../../../redux/minAndMaxPriceSlice";
+import { clearBrands } from "../../../redux/brandsSlice";
+import { clearCategories } from "../../../redux/categoriesSlice";
+import { clearSearchValue } from "../../../redux/searchInputSlice";
+import { filterData } from "../../../redux/cardDataSlice";
 
 function Card({ img, id, rating, title, price, displayed, discount }) {
   const dispatch = useDispatch();
   const wishlistCards = useSelector((state) => state.wishlist);
   const isInWishlist = wishlistCards.includes(id);
+  const cardsData = useSelector((state) => state.cardsData);
 
   function setWishlistItems(event) {
     let isInWishlist = false;
@@ -37,6 +44,17 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
     }
   }
 
+  function reset() {
+    resetFilters(
+      dispatch,
+      cardsData,
+      clearBrands,
+      clearCategories,
+      clearPriceRange,
+      clearSearchValue,
+      filterData
+    );
+  }
   function setActiveItem() {
     dispatch(
       addDisplayedCard({
@@ -69,6 +87,7 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
         <Link to={`/product-${id}`} className="merchandise-cards__item-page-link">
           <li
             className="merchandise-cards__item-name"
+            onClick={reset}
             onPointerDown={setActiveItem}
           >
             {title.slice(0, 40)}...

@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const itemPageSlice = createSlice({
   name: "add-card",
-  initialState: [],
+  initialState: {},
   reducers: {
     addDisplayedCard: (state, action) => {
-      const isSearched = action.payload.card;
-      state.push(isSearched);
+      const card = action.payload.card;
+      state = card;
+      return state;
     },
   },
 });

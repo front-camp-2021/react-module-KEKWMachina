@@ -21,32 +21,29 @@ export const cardsDataSlice = createSlice({
     },
     filterData: (state, action) => {
       if (action.payload.thumb === "thumb thumb--left") {
-        state.push(
+        state[1] =
           state[0].filter((item) => {
             return (
               item.price >= action.payload.thumbValue &&
               item.price <= action.payload.rightThumbValue
             );
           })
-        );
+        
       } else if (action.payload.thumb === "thumb thumb--right") {
-        state.push(
+        state[1] = 
           state[0].filter((item) => {
             return (
               item.price >= action.payload.leftThumbValue &&
               item.price <= action.payload.thumbValue
             );
           })
-        );
+      
       }
     },
   },
   extraReducers: {
     [getCardData.fulfilled]: (state, action) => {
-      return action.payload.cardData;
-    },
-    [getCardData.fulfilled]: (state, action) => {
-      state.push(action.payload.cardData);
+      state[0] = action.payload.cardData;
     },
   },
 });

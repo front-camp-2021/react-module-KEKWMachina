@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchReducer from "./cardsSlice";
 import addCategoryReducer from "./categoriesSlice";
 import addBrandReducer from "./brandsSlice";
 import addToWishlistReducer from "./wishlistSlice";
@@ -13,7 +12,6 @@ import searchInputReducer from "./searchInputSlice";
 
 export default configureStore({
   reducer: {
-    searchParameter: searchReducer,
     categories: addCategoryReducer,
     brands: addBrandReducer,
     wishlist: addToWishlistReducer,

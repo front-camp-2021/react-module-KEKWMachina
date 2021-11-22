@@ -2,15 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const userInputSlice = createSlice({
   name: "set-user-input",
-  initialState: ['',],
+  initialState: '',
   reducers: {
     setUserInput: (state, action) => {
       const userInput = action.payload.userInput;
-      state.push(userInput);
+      state = userInput;
+      return state;
+    },
+    clearSearchValue: (state) => {
+      state = '';
+      return state;
     },
   },
 });
 
-export const { setUserInput } = userInputSlice.actions;
+export const { setUserInput, clearSearchValue } = userInputSlice.actions;
 
 export default userInputSlice.reducer;
