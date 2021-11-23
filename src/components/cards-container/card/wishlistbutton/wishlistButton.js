@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function WishlistButton({ id, isInWishlist, setWishlistItems, displayed }) {
   let buttonText;
   if (isInWishlist && displayed) {
@@ -19,5 +21,12 @@ function WishlistButton({ id, isInWishlist, setWishlistItems, displayed }) {
     </button>
   );
 }
+
+WishlistButton.propTypes = {
+  id: PropTypes.string,
+  isInWishlist: PropTypes.bool,
+  setWishlistItems: PropTypes.func,
+  displayed: PropTypes.bool,
+};
 
 export default WishlistButton;

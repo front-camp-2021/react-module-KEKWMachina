@@ -1,4 +1,5 @@
 import WishlistButton from "./wishlistbutton/wishlistButton";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToWishlist,
@@ -110,6 +111,16 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
       </div>
     </div>
   );
+}
+
+Card.propTypes = {
+  img: PropTypes.string,
+  id: PropTypes.string,
+  rating: PropTypes.number,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  displayed: PropTypes.bool,
+  discount: PropTypes.number
 }
 
 export default Card;

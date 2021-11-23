@@ -7,6 +7,8 @@ import MainContentNav from "./components/main-content-nav/main-content-nav";
 import Wishlist from "./components/wishlist/wishlist";
 import Discounts from "./components/discounts/discounts";
 import ItemPage from "./components/itempage/itempage";
+import Login from "./components/login/login";
+import EditPage from "./components/editingPage/editPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { filterData } from "./helper-functions/filterLogic";
@@ -17,12 +19,13 @@ import { filterUserInput } from "./helper-functions/filterUserInput";
 import { findDiscountedItems } from "./helper-functions/findDiscountedItems";
 
 function App() {
-  const { categories, brands, wishlist, searchInput, activeItem } = useSelector((state) => state);
+  const { categories, brands, wishlist, searchInput, activeItem } = useSelector(
+    (state) => state
+  );
   const cardsData = useSelector((state) => state.cardsData)[
     useSelector((state) => state.cardsData).length - 1
   ];
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getCardData());
   }, [dispatch]);
@@ -33,14 +36,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header />
         <Breadcrumbs />
         <Switch>
           <Route exact path="/">
             {Boolean(cardsData) && (
               <>
-                <MainContentNav cardsData={cardProps} />
+                <MainContentNav itemsFound={cardProps.length} />
                 <div className="main-content">
                   <FiltersContainer />
                   <CardsContainer cardsData={cardProps} />
@@ -55,8 +58,14 @@ function App() {
           <Route exact path="/discounts">
             <Discounts cards={findDiscountedItems(cardProps)} />
           </Route>
+          <Route exact path="/edit">
+            <EditPage />
+          </Route>
           <Route exact path="/product-:id">
             <ItemPage card={activeItem} />
+          </Route>
+          <Route exact path="/login">
+            <Login />
           </Route>
           <Route>
             <h1 className="page-not-found">Oops, wrong page 404</h1>

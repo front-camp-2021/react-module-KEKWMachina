@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Card from "../cards-container/card/card";
+import PropTypes from "prop-types";
 
 function Discounts({ cards }) {
   let cardsData = cards;
@@ -40,6 +41,10 @@ function Discounts({ cards }) {
       </div>
     </>
   );
+}
+
+Discounts.propTypes = {
+  cards: PropTypes.array
 }
 
 export default Discounts;

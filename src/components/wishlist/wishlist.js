@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import Card from "../cards-container/card/card";
 import { useDispatch } from "react-redux";
 import { clearState } from "../../redux/wishlistSlice";
+import PropTypes from "prop-types";
 
-function Wishlist(props) {
+function Wishlist({ cards }) {
   const dispatch = useDispatch();
-  let cardsData = props.cards;
+  let cardsData = cards;
 
   return (
     <>
@@ -49,6 +50,10 @@ function Wishlist(props) {
       </div>
     </>
   );
+}
+
+Wishlist.propTypes = {
+  cards: PropTypes.array,
 }
 
 export default Wishlist;

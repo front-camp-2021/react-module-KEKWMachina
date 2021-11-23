@@ -2,12 +2,12 @@ import Searchfield from "./searchfield/searchfield";
 import Card from "./card/card";
 import React from "react";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-function CardsContainer({cardsData}) {
+function CardsContainer({ cardsData }) {
   const elementsIndexes = useSelector((state) => state.paginationElements)[
     useSelector((state) => state.paginationElements).length - 1
   ];
-
   const dataForRender = cardsData;
 
   return (
@@ -36,6 +36,10 @@ function CardsContainer({cardsData}) {
       </div>
     </div>
   );
+}
+
+CardsContainer.propTypes = {
+  cardsData: PropTypes.array
 }
 
 export default CardsContainer;

@@ -3,6 +3,7 @@ import { addCategory, removeCategory } from "../../../../redux/categoriesSlice";
 import { addBrand, removeBrand } from "../../../../redux/brandsSlice";
 import { useDispatch } from "react-redux";
 import { setElements } from "../../../../redux/paginationSlice";
+import PropTypes from "prop-types";
 
 function Filters({title, categoriesData, hasLine}) {
   const dispatch = useDispatch();
@@ -69,6 +70,12 @@ function Filters({title, categoriesData, hasLine}) {
       {hasLine && <div className="filters_line"></div>}
     </>
   );
+}
+
+Filters.propTypes = {
+  title: PropTypes.string,
+  categoriesData: PropTypes.array,
+  hasLine: PropTypes.bool
 }
 
 export default Filters;

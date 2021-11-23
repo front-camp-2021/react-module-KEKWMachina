@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 function Checkbox({ title, checkboxName, handleChange }) {
   const { categories, brands } = useSelector((state) => state);
@@ -28,6 +29,12 @@ function Checkbox({ title, checkboxName, handleChange }) {
       </div>
     </>
   );
+}
+
+Checkbox.propTypes = {
+  title: PropTypes.string,
+  checkboxName: PropTypes.string,
+  handleChange: PropTypes.func
 }
 
 export default Checkbox;

@@ -6,13 +6,14 @@ import { clearPriceRange } from "../../redux/minAndMaxPriceSlice";
 import { filterData } from "../../redux/cardDataSlice";
 import { clearSearchValue } from "../../redux/searchInputSlice";
 import resetFilters from "../../helper-functions/resetFilters";
+import PropTypes from "prop-types";
 
-function MainContentNav(props) {
+function MainContentNav({ itemsFound }) {
   const dispatch = useDispatch();
-  const cardsData = useSelector((state) => state.cardsData);
+  const { cardsData, loggedIn } = useSelector((state) => state);
 
   function reset() {
-    resetFilters(      
+    resetFilters(
       dispatch,
       cardsData,
       clearBrands,
@@ -20,7 +21,7 @@ function MainContentNav(props) {
       clearPriceRange,
       clearSearchValue,
       filterData
-      );
+    );
   }
 
   return (
@@ -32,20 +33,36 @@ function MainContentNav(props) {
         </div>
       </div>
       <div className="search-results">
-        <div className="search-results__number">
-          {props.cardsData.length} Results Found
-        </div>
+        <div className="search-results__number">{itemsFound} Results Found</div>
         <div>
-        <Link to="/discounts">
-          <button onPointerDown={reset} className="search-results__discounted-button"></button>
-        </Link>
-        <Link to="/wishlist">
-          <button onPointerDown={reset} className="search-results__wishlist-button"></button>
-        </Link>
+          {loggedIn && (
+            <Link to="/edit">
+              <button
+                onPointerDown={reset}
+                className="search-results__reset-button"
+              ></button>
+            </Link>
+          )}
+          <Link to="/discounts">
+            <button
+              onPointerDown={reset}
+              className="search-results__discounted-button"
+            ></button>
+          </Link>
+          <Link to="/wishlist">
+            <button
+              onPointerDown={reset}
+              className="search-results__wishlist-button"
+            ></button>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
+
+MainContentNav.propTypes = {
+  itemsFound: PropTypes.number,
+};
 
 export default MainContentNav;
