@@ -1,3 +1,3 @@
 export function findDiscountedItems(cards) {
-    return cards.filter(card => Boolean(card.discount));
+    return cards ? cards.filter(card => Boolean(card.discount)) : [];
 }

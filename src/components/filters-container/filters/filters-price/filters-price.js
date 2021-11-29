@@ -5,15 +5,13 @@ import handleLeftInput from "../../../../helper-functions/handleThumbLeft";
 import handleRightInput from "../../../../helper-functions/handleThumbRight";
 import { setInitialPriceRange } from "../../../../redux/minAndMaxPriceSlice";
 import { setElements } from "../../../../redux/paginationSlice";
+import { dispatchChangeEvent } from "../../../../helper-functions/dispatchFiltersChange";
 
 function MultiRangeSlider() {
   const dispatch = useDispatch();
-  const cardsData = useSelector((state) => state.cardsData);
-  const priceRangeValCurrent = useSelector((state) => state.priceRange)[
-    useSelector((state) => state.priceRange).length - 1
-  ];
-  const [min, max] = findMinMax(cardsData[0]);
-  const [minVal, maxVal] = priceRangeValCurrent;
+  const { selectedProducts, priceRange } = useSelector((state) => state);
+  const [min, max] = findMinMax(selectedProducts[0]);
+  const [minVal, maxVal] = priceRange;
   const range = useRef(null);
 
   const getPercent = useCallback(
@@ -24,7 +22,7 @@ function MultiRangeSlider() {
   useEffect(() => {
     dispatch(
       setInitialPriceRange({
-        inintialPriceRange: findMinMax(cardsData[0]),
+        inintialPriceRange: findMinMax(selectedProducts[0]),
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,16 +36,7 @@ function MultiRangeSlider() {
       range.current.style.left = `${minPercent}%`;
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [minVal, maxVal, getPercent]);
-
-  useEffect(() => {
-    if (range.current) {
-      const minPercent = getPercent(minVal);
-      const maxPercent = getPercent(maxVal);
-
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }
-  }, [minVal, maxVal, getPercent]);
+  }, [minVal, maxVal, getPercent, dispatch]);
 
   return (
     <div className="filters__container">
@@ -63,6 +52,7 @@ function MultiRangeSlider() {
             })
           );
           handleLeftInput(event, dispatch, maxVal);
+          dispatchChangeEvent();
         }}
         className="thumb thumb--left"
       />
@@ -78,6 +68,7 @@ function MultiRangeSlider() {
             })
           );
           handleRightInput(event, dispatch, minVal);
+          dispatchChangeEvent();
         }}
         className="thumb thumb--right"
       />

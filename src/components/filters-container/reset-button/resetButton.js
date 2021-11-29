@@ -1,29 +1,30 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearBrands } from "../../../redux/brandsSlice";
 import { clearCategories } from "../../../redux/categoriesSlice";
 import { clearPriceRange } from "../../../redux/minAndMaxPriceSlice";
-import { filterData } from "../../../redux/cardDataSlice";
 import { clearSearchValue } from "../../../redux/searchInputSlice";
+import { setSelectedProducts } from "../../../redux/productsDataSlice";
 import resetFilters from "../../../helper-functions/resetFilters";
 
 function ResetButton() {
   const dispatch = useDispatch();
-  const cardsData = useSelector((state) => state.cardsData);
 
-  function reset() {
+  async function reset() {
     resetFilters(
       dispatch,
-      cardsData,
+      setSelectedProducts,
       clearBrands,
       clearCategories,
       clearPriceRange,
-      clearSearchValue,
-      filterData
+      clearSearchValue
     );
   }
 
   return (
-    <button className="filters__filters-reset-button" onPointerDown={reset}>
+    <button
+      className="filters__filters-reset-button"
+      onClick={reset}
+    >
       Reset Filters
     </button>
   );

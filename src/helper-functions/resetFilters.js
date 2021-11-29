@@ -1,30 +1,24 @@
-import { findMinMax } from "./findMinMax";
-
-export default function resetFilters(
+export default async function resetFilters(
   dispatchFn,
-  cardsData,
+  setSelectedProductsFn,
   clearBrandsFn,
   clearCategoriesFn,
   clearPriceRangeFn,
-  clearSearchValueFn,
-  filterData
+  clearSearchValueFn
 ) {
-  const checkboxes = document.querySelectorAll(".filters__checkbox-square");
-  const searchInput = document.querySelector(".searchfield__input");
-  const [min, max] = findMinMax(cardsData[0]);
-
-  checkboxes.forEach((checkbox) => (checkbox.checked = false));
-  searchInput.value = "";
-
+  const data = await fetch("http://localhost:3001/products").then((data) =>
+    data.json()
+  );
+  dispatchFn(setSelectedProductsFn({
+    selectedProducts: data,
+  }))
   dispatchFn(clearBrandsFn({}));
   dispatchFn(clearCategoriesFn({}));
   dispatchFn(clearSearchValueFn({}));
-  dispatchFn(
-    filterData({
-      thumb: "thumb thumb--left",
-      thumbValue: min,
-      rightThumbValue: max,
-    })
-  );
   dispatchFn(clearPriceRangeFn({}));
+
+  const checkboxes = document.querySelectorAll(".filters__checkbox-square");
+  const searchInput = document.querySelector(".searchfield__input");
+  checkboxes.forEach((checkbox) => (checkbox.checked = false));
+  searchInput.value = "";
 }

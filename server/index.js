@@ -1,64 +1,22 @@
 const express = require("express");
-const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 const server = express();
-
+const brands = require("./routes/brands");
+const categories = require("./routes/categories");
+const products = require("./routes/products");
+const login = require("./routes/login");
 const port = 3001;
+
 server.use(cors());
 server.use(bodyParser.json());
 
-server.use("/login", (request, response) => {
-  if (request.method === "POST") {
-    try {
-      const data = fs.readFileSync("user.json", "utf8");
-      function validateUser() {
-        const email = JSON.parse(data).users.find((user) => {
-          return user.email === request.body.email;
-        });
-        if (!email) {
-          response.send({ response: "wrong email" });
-        }
-        if (email.password !== request.body.password) {
-          response.send({ response: "wrong password" });
-        }
-        response.send({ response: "logged in" });
-      }
-      validateUser();
-      response.end();
-    } catch (err) {
-      response.send(err);
-    }
-  }
-});
-
-server.get("/products", (request, response) => {
-  try {
-    const data = fs.readFileSync("db.json", "utf8");
-    response.send(JSON.parse(data).products);
-  } catch (err) {
-    response.send(err);
-  }
-});
-
-server.get("/categories", (request, response) => {
-  try {
-    const data = fs.readFileSync("db.json", "utf8");
-    response.send(JSON.parse(data).categories);
-  } catch (err) {
-    response.send(err);
-  }
-});
-
-server.get("/brands", (request, response) => {
-  try {
-    const data = fs.readFileSync("db.json", "utf8");
-    response.send(JSON.parse(data).brands);
-  } catch (err) {
-    response.send(err);
-  }
-});
+server.use("/products", products);
+server.use("/products/search", products);
+server.use("/products/wishlist", products);
+server.use("/categories", categories);
+server.use("/brands", brands);
+server.use("/login", login);
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);

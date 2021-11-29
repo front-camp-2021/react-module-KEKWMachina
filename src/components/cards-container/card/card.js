@@ -1,10 +1,5 @@
-import WishlistButton from "./wishlistbutton/wishlistButton";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../../redux/wishlistSlice";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addDisplayedCard } from "../../../redux/itemPageSlice";
 import resetFilters from "../../../helper-functions/resetFilters";
@@ -12,48 +7,35 @@ import { clearPriceRange } from "../../../redux/minAndMaxPriceSlice";
 import { clearBrands } from "../../../redux/brandsSlice";
 import { clearCategories } from "../../../redux/categoriesSlice";
 import { clearSearchValue } from "../../../redux/searchInputSlice";
-import { filterData } from "../../../redux/cardDataSlice";
+import { setSelectedProducts } from "../../../redux/productsDataSlice";
 
-function Card({ img, id, rating, title, price, displayed, discount }) {
+function Card({ img, id, rating, title, price, discount, isFavourite }) {
   const dispatch = useDispatch();
-  const wishlistCards = useSelector((state) => state.wishlist);
-  const isInWishlist = wishlistCards.includes(id);
-  const cardsData = useSelector((state) => state.cardsData);
 
-  function setWishlistItems(event) {
-    let isInWishlist = false;
+  async function setWishlistItems() {
+    const data = await fetch("http://localhost:3001/products/wishlist", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ id: id }),
+    }).then((data) => data.json());
 
-    wishlistCards.filter((item) => {
-      if (item === event.target.id) {
-        isInWishlist = true;
-      }
-      return null;
-    });
-
-    if (isInWishlist) {
-      dispatch(
-        removeFromWishlist({
-          item: event.target.id,
-        })
-      );
-    } else {
-      dispatch(
-        addToWishlist({
-          item: event.target.id,
-        })
-      );
-    }
+    dispatch(
+      setSelectedProducts({
+        selectedProducts: data,
+      })
+    );
   }
 
   function reset() {
     resetFilters(
       dispatch,
-      cardsData,
       clearBrands,
       clearCategories,
       clearPriceRange,
-      clearSearchValue,
-      filterData
+      clearSearchValue
     );
   }
   function setActiveItem() {
@@ -77,15 +59,17 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
         <div className="merchandise-cards__rating">{rating}</div>
         {discount ? (
           <div className="merchandise-cards__price">
-            ₴{Math.ceil(price - (price / 100) * discount)} /{" "}
-            <del>{price}</del>
+            ₴{Math.ceil(price - (price / 100) * discount)} / <del>{price}</del>
           </div>
         ) : (
           <div className="merchandise-cards__price">₴{price}</div>
         )}
       </div>
       <ul className="merchandise-cards__item-descriptions">
-        <Link to={`/product-${id}`} className="merchandise-cards__item-page-link">
+        <Link
+          to={`/product-${id}`}
+          className="merchandise-cards__item-page-link"
+        >
           <li
             className="merchandise-cards__item-name"
             onClick={reset}
@@ -99,12 +83,12 @@ function Card({ img, id, rating, title, price, displayed, discount }) {
         </li>
       </ul>
       <div className="merchandise-cards__buttons">
-        <WishlistButton
-          setWishlistItems={setWishlistItems}
-          id={id}
-          isInWishlist={isInWishlist}
-          displayed={displayed}
-        />
+        <button
+          className="merchandise-cards__wishlist-button"
+          onPointerDown={setWishlistItems}
+        >
+          {isFavourite ? "ADDED" : "WISHLIST"}
+        </button>
         <button className="merchandise-cards__add-to-cart-button">
           ADD TO CART
         </button>
@@ -120,7 +104,7 @@ Card.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   displayed: PropTypes.bool,
-  discount: PropTypes.number
-}
+  discount: PropTypes.number,
+};
 
 export default Card;

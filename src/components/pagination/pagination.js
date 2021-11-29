@@ -5,12 +5,12 @@ import {
   setPageForward,
 } from "../../redux/paginationSlice";
 
-function Pagination(props) {
+function Pagination({ cardsData }) {
   const dispatch = useDispatch();
   const elementsIndexes = useSelector((state) => state.paginationElements)[
     useSelector((state) => state.paginationElements).length - 1
   ];
-  const pagesTotal = [...Array(Math.ceil(props.cardsData.length / 9)).keys()];
+  const pagesTotal = [...Array(Math.ceil(cardsData.length / 9)).keys()];
 
   function changePage(event) {
     dispatch(

@@ -28,7 +28,8 @@ function Login() {
         "visible";
     }
     if (!wrongEmail) {
-      document.querySelector(".login__wrong-email").style.visibility = "hidden";
+      document.querySelector(".login__wrong-email").style.visibility = 
+        "hidden";
     }
     if (wrongPassword) {
       document.querySelector(".login__wrong-password").style.visibility =

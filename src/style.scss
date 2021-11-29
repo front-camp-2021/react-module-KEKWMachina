@@ -70,7 +70,7 @@ body {
     width: 70px;
     cursor: pointer;
   }
- }
+}
 
 .breadcrumbs {
   display: flex;
@@ -357,6 +357,22 @@ body {
   .cards {
     width: 70%;
 
+    &__show-resluts {
+      position: absolute;
+      z-index: 2;
+      border-radius: 4px;
+      border: none;
+      background-color: $button-primary-color;
+      height: 40px;
+      width: 80px;
+      color: $elements-main-color;
+      top: 165px;
+      left: 347px;
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0.8;
+    }
+
     .searchfield {
       width: 100%;
       filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
@@ -561,7 +577,6 @@ body {
     }
   }
 }
-
 // Login Form
 .login {
   text-align: center;
@@ -594,13 +609,90 @@ body {
     height: 30px;
     width: 70px;
     border-radius: 4px;
-    border:none;
+    border: none;
     background-color: $button-primary-color;
     color: $elements-main-color;
     cursor: pointer;
   }
 }
+//Edit Page 
+.edit-page {
+  display: flex;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
 
+  &__acess-denied-msg {
+    filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
+    background-color: $elements-main-color;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  &__action-selector {
+    width: 30%;
+    height: 400px;
+    filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
+    background-color: $elements-main-color;
+    border-radius: 4px;
+  }
+
+  &__action-add {
+    border-radius: 4px;
+    height: 30px;
+    width: 95%;
+    margin: 2.5%;
+    background-color: $button-primary-color;
+    border: none;
+    cursor: pointer;
+    color: $elements-main-color;
+    background-image: url(/img/add-item.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: left 15% bottom 50%;
+  }
+
+  &__action-remove {
+    border-radius: 4px;
+    height: 30px;
+    width: 95%;
+    margin: 2.5%;
+    background-color: $button-primary-color;
+    border: none;
+    cursor: pointer;
+    color: $elements-main-color;
+    background-image: url(/img/cross-mark.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: left 15% bottom 50%;
+  }
+
+  &__action-edit {
+    border-radius: 4px;
+    height: 30px;
+    width: 95%;
+    margin: 2.5%;
+    background-color: $button-primary-color;
+    border: none;
+    cursor: pointer;
+    color: $elements-main-color;
+    background-image: url(/img/edit-btn.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: left 15% bottom 50%;
+  }
+
+  &__action-form {
+    width: 70%;
+    height: 400px;
+    margin-left: 1%;
+    filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
+    background-color: $elements-main-color;
+    border-radius: 4px;
+  }
+}
 //Wishlist page
 .wishlist-nav-container {
   display: inline;
@@ -763,7 +855,6 @@ body {
     }
   }
 }
-
 //item page
 .wishlist-nav-container__wishlist-back-btn {
   text-decoration: none;
@@ -835,6 +926,15 @@ body {
     }
   }
 }
+
+.item-not-found-msg {
+  filter: drop-shadow(-0.4px 0.5px 0.05rem $shadow-color);
+  text-align: center;
+  background-color: $elements-main-color;
+  height: 45px;
+  margin: 15px;
+  border-radius: 6px;
+}
 // 404
 .page-not-found {
   text-align: center;
@@ -850,6 +950,10 @@ body {
 
     .cards {
       width: 75%;
+
+      &__show-resluts {
+        left: 20%;
+      }
 
       .merchandise-cards {
         &__wishlist-button {
@@ -884,6 +988,11 @@ body {
 
     .cards {
       width: 70%;
+
+      &__show-resluts {
+        top: 140px;
+        left: 20%;
+      }
 
       .merchandise-cards {
         display: grid;
@@ -930,6 +1039,11 @@ body {
 
     .cards {
       width: 100%;
+
+      &__show-resluts {
+        top: 100px;
+        left: 70%;
+      }
 
       .merchandise-cards {
         display: grid;
@@ -1012,7 +1126,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    
+
     .filters-header {
       display: flex;
       flex-direction: row;

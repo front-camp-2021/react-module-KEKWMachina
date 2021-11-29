@@ -8,8 +8,7 @@ import MultiRangeSlider from "./filters/filters-price/filters-price";
 
 function FiltersContainer() {
   const dispatch = useDispatch();
-  const categoriesData = useSelector((state) => state.categoriesData);
-  const brandsData = useSelector((state) => state.brandsData);
+  const { categoriesData, brandsData } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(getCategoriesData());

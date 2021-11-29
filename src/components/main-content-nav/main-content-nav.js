@@ -3,24 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearBrands } from "../../redux/brandsSlice";
 import { clearCategories } from "../../redux/categoriesSlice";
 import { clearPriceRange } from "../../redux/minAndMaxPriceSlice";
-import { filterData } from "../../redux/cardDataSlice";
 import { clearSearchValue } from "../../redux/searchInputSlice";
+import { setSelectedProducts } from "../../redux/productsDataSlice";
 import resetFilters from "../../helper-functions/resetFilters";
 import PropTypes from "prop-types";
 
 function MainContentNav({ itemsFound }) {
   const dispatch = useDispatch();
-  const { cardsData, loggedIn } = useSelector((state) => state);
+  const { loggedIn } = useSelector((state) => state);
 
   function reset() {
     resetFilters(
       dispatch,
-      cardsData,
+      setSelectedProducts,
       clearBrands,
       clearCategories,
       clearPriceRange,
       clearSearchValue,
-      filterData
     );
   }
 

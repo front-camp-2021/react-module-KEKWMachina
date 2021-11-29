@@ -5,32 +5,31 @@ import { useSelector } from "react-redux";
 function ItemPage() {
   const BACKEND_URL = "http://localhost:3001/";
   const products = new URL("products", BACKEND_URL);
-  const cardsData = useSelector(state => state.cardsData[0]);
+  const cardsData = useSelector((state) => state.selectedProducts[0]);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [card, setCard] = useState([]);
 
   useEffect(() => {
     getCard();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function getCard() {
     if (cardsData) {
       setLoading(true);
-      setCard(cardsData.find(card => card.id === id));
+      setCard(cardsData.find((card) => card.id === id));
       setLoading(false);
-      return cardsData.find(card => card.id === id);
+      return cardsData.find((card) => card.id === id);
     } else {
       setLoading(true);
-      products.searchParams.set("q", id);
       const response = await fetch(products);
       const data = await response.json();
-      setCard(data[0]);
+      setCard(data.find((card) => card.id === id));
       setLoading(false);
-      return data[0]
+      return data[0];
     }
-  };
+  }
 
   return (
     <>
@@ -58,7 +57,9 @@ function ItemPage() {
                 <li>Price: {card.price}</li>
               </ul>
               <p className="item-container__description-name">{card.title}</p>
-              <button className="item-container__description-button">Buy</button>
+              <button className="item-container__description-button">
+                Buy
+              </button>
             </div>
           </div>
         </>
@@ -69,7 +70,7 @@ function ItemPage() {
               Back to Purchases
             </button>
           </Link>
-          <h1>Item not found</h1>
+          <h1 className="item-not-found-msg">Item not found</h1>
         </>
       )}
     </>

@@ -3,6 +3,7 @@ import { addCategory, removeCategory } from "../../../../redux/categoriesSlice";
 import { addBrand, removeBrand } from "../../../../redux/brandsSlice";
 import { useDispatch } from "react-redux";
 import { setElements } from "../../../../redux/paginationSlice";
+import { dispatchChangeEvent } from "../../../../helper-functions/dispatchFiltersChange";
 import PropTypes from "prop-types";
 
 function Filters({title, categoriesData, hasLine}) {
@@ -22,6 +23,7 @@ function Filters({title, categoriesData, hasLine}) {
         })
       );
     }
+    dispatchChangeEvent();
     dispatch(
       setElements({
         indexesAndActivePage: [0, 9, 1]
@@ -43,6 +45,7 @@ function Filters({title, categoriesData, hasLine}) {
         })
       );
     }
+    dispatchChangeEvent();
     dispatch(
       setElements({
         indexesAndActivePage: [0, 9, 1]

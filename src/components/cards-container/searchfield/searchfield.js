@@ -1,23 +1,22 @@
 import { useDispatch } from "react-redux";
 import { setElements } from "../../../redux/paginationSlice";
 import { setUserInput } from "../../../redux/searchInputSlice";
-import { debounce } from "../../../helper-functions/debounce";
-
+import { dispatchChangeEvent } from "../../../helper-functions/dispatchFiltersChange";
 function Searchfield() {
   const dispatch = useDispatch();
 
   function handleSearchInput(event) {
+    dispatchChangeEvent();
     dispatch(
       setUserInput({
-        userInput: event.target.value
-      })
-    )
-    dispatch(
-      setElements({
-        indexesAndActivePage: [0, 9, 1]
+        userInput: event.target.value,
       })
     );
-
+    dispatch(
+      setElements({
+        indexesAndActivePage: [0, 9, 1],
+      })
+    );
   }
 
   return (
@@ -25,7 +24,7 @@ function Searchfield() {
       <input
         className="searchfield__input"
         placeholder="Search"
-        onChange={debounce(handleSearchInput, 200)}
+        onChange={handleSearchInput}
       ></input>
     </div>
   );

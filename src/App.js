@@ -9,55 +9,62 @@ import Discounts from "./components/discounts/discounts";
 import ItemPage from "./components/itempage/itempage";
 import Login from "./components/login/login";
 import EditPage from "./components/editingPage/editPage";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { filterData } from "./helper-functions/filterLogic";
-import { filterWishlistItems } from "./helper-functions/filtersWishlistItems";
 import { useEffect } from "react";
-import { getCardData } from "./redux/cardDataSlice";
-import { filterUserInput } from "./helper-functions/filterUserInput";
+import { getInitialData } from "./redux/productsDataSlice";
 import { findDiscountedItems } from "./helper-functions/findDiscountedItems";
 
 function App() {
-  const { categories, brands, wishlist, searchInput, activeItem } = useSelector(
-    (state) => state
-  );
-  const cardsData = useSelector((state) => state.cardsData)[
-    useSelector((state) => state.cardsData).length - 1
-  ];
+  const { activeItem, selectedProducts } = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCardData());
-  }, [dispatch]);
 
-  const cardProps = cardsData
-    ? filterData(filterUserInput(searchInput, cardsData), categories, brands)
-    : [];
+  useEffect(() => {
+    dispatch(getInitialData());
+  }, [dispatch]);
 
   return (
     <div className="App">
-      <Router>
+      <Router basename="/products">
         <Header />
         <Breadcrumbs />
         <Switch>
           <Route exact path="/">
-            {Boolean(cardsData) && (
+            <Redirect to="/search/" />
+          </Route>
+          <Route exact path="/search/">
+            {selectedProducts.length > 0 && (
               <>
-                <MainContentNav itemsFound={cardProps.length} />
+                <MainContentNav
+                  itemsFound={
+                    selectedProducts[selectedProducts.length - 1].length
+                  }
+                />
                 <div className="main-content">
                   <FiltersContainer />
-                  <CardsContainer cardsData={cardProps} />
+                  <CardsContainer />
                 </div>
-                <Pagination cardsData={cardProps} />
+                <Pagination
+                  cardsData={selectedProducts[selectedProducts.length - 1]}
+                />
               </>
             )}
           </Route>
-          <Route exact path="/wishlist">
-            <Wishlist cards={filterWishlistItems(wishlist, cardsData)} />
-          </Route>
-          <Route exact path="/discounts">
-            <Discounts cards={findDiscountedItems(cardProps)} />
-          </Route>
+          {selectedProducts.length > 0 && (
+            <Route exact path="/wishlist">
+              <Wishlist />
+            </Route>
+          )}
+          {selectedProducts.length > 0 && (
+            <Route exact path="/discounts">
+              <Discounts cards={findDiscountedItems(selectedProducts[0])} />
+            </Route>
+          )}
           <Route exact path="/edit">
             <EditPage />
           </Route>

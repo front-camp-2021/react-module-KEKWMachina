@@ -1,19 +1,6 @@
 {
   "products": [
     {
-      "id": "76w0hz7015kkr9kjkav",
-      "images": [
-        "https://content2.rozetka.com.ua/goods/images/big_tile/163399632.jpg",
-        "https://content.rozetka.com.ua/goods/images/big_tile/163399633.jpg"
-      ],
-      "title": "Ноутбук Acer Aspire 3 A315-57G-336G (NX.HZREU.01S) Charcoal Black",
-      "rating": 2.89,
-      "price": 15999,
-      "category": "laptops",
-      "brand": "acer",
-      "discount": 15
-    },
-    {
       "id": "qeagrlm9lrkr9kjkav",
       "images": [
         "https://content1.rozetka.com.ua/goods/images/big_tile/178060622.jpg",
@@ -23,7 +10,8 @@
       "rating": 1.96,
       "price": 21500,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "isFavourite": true
     },
     {
       "id": "0y9ksratv6akr9kjkav",
@@ -35,7 +23,8 @@
       "rating": 2.42,
       "price": 22999,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "isFavourite": true
     },
     {
       "id": "cvr29caokhhkr9kjkav",
@@ -47,7 +36,8 @@
       "rating": 0.53,
       "price": 28999,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "isFavourite": true
     },
     {
       "id": "k9hb29sfeekr9kjkav",
@@ -59,7 +49,8 @@
       "price": 22500,
       "category": "laptops",
       "brand": "acer",
-      "discount": 5
+      "discount": 5,
+      "isFavourite": true
     },
     {
       "id": "4g0lv7ii7ytkr9kjkav",
@@ -72,7 +63,8 @@
       "rating": 1.57,
       "price": 33999,
       "category": "laptops",
-      "brand": "apple"
+      "brand": "apple",
+      "isFavourite": true
     },
     {
       "id": "f4zo7g5nb4okr9kjkav",
@@ -86,7 +78,8 @@
       "price": 81000,
       "category": "laptops",
       "brand": "apple",
-      "discount": 12
+      "discount": 12,
+      "isFavourite": false
     },
     {
       "id": "g9amcjezcmkr9kjkav",
@@ -99,7 +92,8 @@
       "rating": 1.89,
       "price": 70999,
       "category": "laptops",
-      "brand": "apple"
+      "brand": "apple",
+      "isFavourite": false
     },
     {
       "id": "b6rae36v8vvkr9kjkav",
@@ -110,7 +104,8 @@
       "rating": 0.92,
       "price": 51999,
       "category": "laptops",
-      "brand": "apple"
+      "brand": "apple",
+      "isFavourite": false
     },
     {
       "id": "nyvu7xbonwfkr9kjkav",
@@ -1153,6 +1148,18 @@
       "price": 1075,
       "category": "ram",
       "brand": "kingston"
+    },
+    {
+      "id": "5c23d01b-c824-4772-879a-78fa83d407fe",
+      "images": [
+        "https://content1.rozetka.com.ua/goods/images/big_tile/25101152.jpg",
+        "https://content1.rozetka.com.ua/goods/images/big_tile/25101161.jpg"
+      ],
+      "title": "Ноутбук Acer Nitro 5 TEST PUSH AN515-55-56WH (NH.Q7PEU.00L) Obsidian Black Суперцена!!!",
+      "rating": 0.53,
+      "price": 28999,
+      "category": "laptops",
+      "brand": "acer"
     }
   ],
   "categories": [
