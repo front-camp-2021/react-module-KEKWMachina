@@ -4,10 +4,8 @@ const filterItems = require("../services/priceFilter");
 const { v4: uuidv4 } = require("uuid");
 
 const pathToBrands = path.join(__dirname, "../db.json");
-let test = 2;
 
 function getProducts(request, response) {
-  console.log(test)
   try {
     const data = fs.readFileSync(pathToBrands, "utf8");
     response.send(JSON.parse(data).products);
@@ -66,7 +64,6 @@ function editProduct(request, response) {
 }
 
 function addToWishlist(request, response) {
-  test = 1
   try {
     const db = JSON.parse(fs.readFileSync(pathToBrands, "utf8"));
     db.products = db.products.map((card) => {

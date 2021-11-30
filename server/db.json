@@ -64,7 +64,7 @@
       "price": 33999,
       "category": "laptops",
       "brand": "apple",
-      "isFavourite": true
+      "isFavourite": false
     },
     {
       "id": "f4zo7g5nb4okr9kjkav",
@@ -117,7 +117,8 @@
       "rating": 4.67,
       "price": 48500,
       "category": "laptops",
-      "brand": "apple"
+      "brand": "apple",
+      "isFavourite": false
     },
     {
       "id": "st0auucse2ikr9kjkav",
@@ -129,7 +130,8 @@
       "price": 25500,
       "category": "laptops",
       "brand": "asus",
-      "discount": 10
+      "discount": 10,
+      "isFavourite": false
     },
     {
       "id": "n03aecr0qrokr9kjkav",
@@ -164,7 +166,8 @@
       "rating": 2.63,
       "price": 27000,
       "category": "laptops",
-      "brand": "asus"
+      "brand": "asus",
+      "isFavourite": false
     },
     {
       "id": "wx7ch9y9dvnkr9kjkav",
@@ -176,7 +179,8 @@
       "rating": 2.65,
       "price": 36500,
       "category": "laptops",
-      "brand": "asus"
+      "brand": "asus",
+      "isFavourite": false
     },
     {
       "id": "8lxdgefbn0hkr9kjkav",
@@ -200,7 +204,8 @@
       "rating": 4.93,
       "price": 25999,
       "category": "laptops",
-      "brand": "dell"
+      "brand": "dell",
+      "isFavourite": false
     },
     {
       "id": "0p2cm6tmha3kr9kjkav",
@@ -519,7 +524,8 @@
       "rating": 0.65,
       "price": 57000,
       "category": "video_cards",
-      "brand": "msi"
+      "brand": "msi",
+      "isFavourite": false
     },
     {
       "id": "kub9vo3i3hckr9kjkav",
@@ -531,7 +537,8 @@
       "rating": 2.04,
       "price": 28000,
       "category": "video_cards",
-      "brand": "asus"
+      "brand": "asus",
+      "isFavourite": false
     },
     {
       "id": "mnrntvpjpupkr9kjkav",
@@ -577,7 +584,8 @@
       "rating": 1.52,
       "price": 28000,
       "category": "video_cards",
-      "brand": "asus"
+      "brand": "asus",
+      "isFavourite": false
     },
     {
       "id": "njwul0o0jflkr9kjkav",
@@ -634,7 +642,8 @@
       "rating": 2.45,
       "price": 46000,
       "category": "video_cards",
-      "brand": "gigabyte"
+      "brand": "gigabyte",
+      "isFavourite": false
     },
     {
       "id": "uc0b8t6kx6dkr9kjkav",
@@ -1159,7 +1168,8 @@
       "rating": 0.53,
       "price": 28999,
       "category": "laptops",
-      "brand": "acer"
+      "brand": "acer",
+      "isFavourite": true
     }
   ],
   "categories": [

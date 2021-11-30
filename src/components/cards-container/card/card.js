@@ -8,12 +8,13 @@ import { clearBrands } from "../../../redux/brandsSlice";
 import { clearCategories } from "../../../redux/categoriesSlice";
 import { clearSearchValue } from "../../../redux/searchInputSlice";
 import { setSelectedProducts } from "../../../redux/productsDataSlice";
+import { addToWishlist } from "../../../redux/productsDataSlice";
 
 function Card({ img, id, rating, title, price, discount, isFavourite }) {
   const dispatch = useDispatch();
 
   async function setWishlistItems() {
-    const data = await fetch("http://localhost:3001/products/wishlist", {
+    await fetch("http://localhost:3001/products/wishlist", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -23,8 +24,8 @@ function Card({ img, id, rating, title, price, discount, isFavourite }) {
     }).then((data) => data.json());
 
     dispatch(
-      setSelectedProducts({
-        selectedProducts: data,
+      addToWishlist({
+        id: id,
       })
     );
   }
@@ -32,6 +33,7 @@ function Card({ img, id, rating, title, price, discount, isFavourite }) {
   function reset() {
     resetFilters(
       dispatch,
+      setSelectedProducts,
       clearBrands,
       clearCategories,
       clearPriceRange,

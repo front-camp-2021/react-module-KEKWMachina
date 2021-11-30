@@ -18,15 +18,25 @@ export const selectedProductsSilce = createSlice({
     setSelectedProducts(state, action) {
       state[1] = action.payload.selectedProducts;
     },
+    addToWishlist(state, action) {
+      state[1].map((product) => {
+        if (product.id === action.payload.id) {
+          return product.isFavourite = !product.isFavourite;
+        } else {
+          return product;
+        }
+      });
+    },
   },
   extraReducers: {
     [getInitialData.fulfilled]: (state, action) => {
       state[0] = action.payload.cardData;
+      state[1] = action.payload.cardData;
     },
   },
 });
 
-export const { setSelectedProducts } =
+export const { setSelectedProducts, addToWishlist } =
   selectedProductsSilce.actions;
 
 export default selectedProductsSilce.reducer;

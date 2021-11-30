@@ -21,7 +21,7 @@ function CardsContainer() {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-  const displayResults = AwesomeDebouncePromise(displayResultsBtn, 500);
+  const displayResults = AwesomeDebouncePromise(displayResultsBtn, 0);
 
   useEffect(() => {
     dispatch(getInitialData({}));
